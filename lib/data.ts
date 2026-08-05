@@ -33,6 +33,16 @@ export interface EducationItem {
 export const projects: Project[] = [
   {
     num: '01',
+    name: 'AdaptAd',
+    sub: 'Two-Agent Adversarial Ad Decision System',
+    date: 'Jan – Apr 2026',
+    desc: 'Pioneered a two-agent adversarial system (User Advocate vs. Advertiser Advocate) that dynamically shows, swaps, delays, or suppresses ads — reframing ad delivery as user-experience optimization rather than click maximization. Designed an 8-gene genetic algorithm evolving decision thresholds across generations using engagement and CTR distributions from MovieLens 25M and Avazu (40M rows). Shipped a FastAPI + React stack with multi-provider LLM fallback (Groq → Gemini → template) for decision explanations.',
+    tags: ['FastAPI', 'React', 'Genetic Algorithm', 'Groq', 'Gemini', 'Multi-Agent'],
+    gh: 'https://github.com/ArzooMJ/AdaptAd',
+    demo: 'https://adaptad.onrender.com/',
+  },
+  {
+    num: '02',
     name: 'AI Candidate Recommender',
     sub: 'Semantic Resume Matching Engine',
     date: 'Aug 2025',
@@ -42,7 +52,7 @@ export const projects: Project[] = [
     demo: 'https://candidaterecommender.streamlit.app/',
   },
   {
-    num: '02',
+    num: '03',
     name: 'NomadAI',
     sub: 'Real-Time Travel Discovery Engine',
     date: 'Jul – Aug 2025',
@@ -52,7 +62,7 @@ export const projects: Project[] = [
     demo: 'https://nomadai.streamlit.app/',
   },
   {
-    num: '03',
+    num: '04',
     name: 'SignSynth',
     sub: 'Gesture-Controlled MIDI Instrument',
     date: 'Jun – Jul 2025',
@@ -61,7 +71,7 @@ export const projects: Project[] = [
     gh: 'https://github.com/CR1502/gesture_instrument',
   },
   {
-    num: '04',
+    num: '05',
     name: 'MediScan',
     sub: 'Hybrid Medical Misinformation Classifier',
     date: 'Mar – Apr 2025',
@@ -70,7 +80,7 @@ export const projects: Project[] = [
     gh: 'https://github.com/CR1502/NLP-Project',
   },
   {
-    num: '05',
+    num: '06',
     name: 'Chest X-R-AI',
     sub: 'Multi-Label Disease Diagnosis',
     date: 'Mar – Apr 2025',
@@ -79,7 +89,7 @@ export const projects: Project[] = [
     gh: 'https://github.com/Airport237/Chest-X-R-AI',
   },
   {
-    num: '06',
+    num: '07',
     name: 'PiGaze',
     sub: 'Real-Time Gaze Prediction System',
     date: 'Oct – Dec 2024',
@@ -88,7 +98,7 @@ export const projects: Project[] = [
     gh: 'https://github.com/CR1502/PiGaze',
   },
   {
-    num: '07',
+    num: '08',
     name: 'SoundScape',
     sub: 'Audio-to-Generative Artwork',
     date: 'Apr 2023',
@@ -97,7 +107,7 @@ export const projects: Project[] = [
     gh: 'https://github.com/CR1502/tech-titans',
   },
   {
-    num: '08',
+    num: '09',
     name: 'SmartSprout',
     sub: 'ANN-Driven Smart Irrigation',
     date: 'Feb 2023',
@@ -124,8 +134,11 @@ export const experience: ExperienceItem[] = [
     role: 'AI Engineer Co-op',
     loc: 'Framingham, MA',
     details: [
-      'Architecting a multi-agent LLM orchestration system using LangGraph and LangChain to automate customer email categorization and structured extraction, deploying scalable inference pipelines on Databricks with experiment tracking, tracing, and A/B evaluation.',
-      'Transforming an internal QA assistant into a context-aware conversational system by designing persistent memory architecture, containerizing services with Docker, and implementing CI/CD pipelines via Bitbucket, Jenkins, and Azure DevOps.',
+      'Architected a 5-agent document-extraction system on Databricks Model Serving where an LLM supervisor classifies intent and routes cases to specialized agents run concurrently with asyncio, supporting 14 business action types across five domains.',
+      'Engineered deterministic Pydantic validation over LLM output with bulk-request detection, enforcing mandatory fields and controlled values to return a stable, schema-validated JSON contract; shipped through Azure DevOps CI/CD across isolated dev, QA, and prod Unity Catalog environments.',
+      'Built a constrained RAG assistant for customer-service reps on Databricks Apps, grounding answers in approved knowledge articles through hybrid lexical and vector retrieval over Azure AI Search with Azure OpenAI embeddings and a GPT-4o-mini endpoint.',
+      'Implemented a deterministic guardrail and answer-normalization layer with server-side entitlement filtering across 30 article groups, plus a 9-scorer offline evaluation framework measuring citation accuracy, refusal, and latency over a labeled dataset.',
+      'Designed a multi-engine document-extraction service normalizing Docling, Kreuzberg, and a Gemma 3 12B vision model into one validated schema, with a quality-gated fallback chain that scores each parser and escalates to the vision model for PDFs and images.',
     ],
   },
   {

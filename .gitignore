@@ -19,3 +19,9 @@ node_modules/
 # Misc
 *.log
 npm-debug.log*
+*.tsbuildinfo
+
+# Claude Code local agent config/skills, design handoff notes
+.claude/
+skills-lock.json
+design_handoff_portfolio_editorial/

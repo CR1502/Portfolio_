@@ -1,26 +1,35 @@
 export default function Hero() {
   return (
-    <section className="hero">
-      <div className="hero-grid"></div>
-      <div className="hero-label">AI Engineer / Machine Learning</div>
-      <h1 className="hero-name">
-        <span className="out">Craig</span>
-        <br />
-        <span className="acc">Roberts</span>
-      </h1>
-      <p className="hero-sub">Building intelligent systems that matter</p>
-      <p className="hero-desc">
-        MS in Artificial Intelligence at Northeastern University. I architect multi-agent
-        orchestration systems, design retrieval-augmented pipelines, and deploy production-grade
-        AI — from CNNs in clinical imaging to LLM-powered conversational memory systems.
-      </p>
-      <div className="hero-cta">
-        <a href="#projects" className="btn-p">View Projects ↓</a>
-        <a href="mailto:roberts.cr@northeastern.edu" className="btn-s">Get In Touch →</a>
-      </div>
-      <div className="hero-scroll">
-        <span>scroll</span>
-        <div className="scroll-line"></div>
+    <section className="ed-hero">
+      <div className="ed-hero-grid">
+        <div>
+          <h1 className="ed-h1">
+            The <em>hard</em> part isn't the <br /> model.<br />
+            It's everything that ships<br />
+            with it.
+          </h1>
+          <p className="ed-lede">
+            MS in Artificial Intelligence at Northeastern. I architect multi-agent
+            orchestration, design retrieval-augmented pipelines, and deploy production
+            AI — from CNNs in clinical imaging to LLM-powered conversational memory.
+          </p>
+        </div>
+        <div className="ed-sidebar">
+          <div className="ed-sidebar-label">Currently</div>
+          <div>
+            <span className="ed-sidebar-strong">AI Engineer Co-op</span>
+            <br />
+            Staples · Framingham
+          </div>
+          <div style={{ marginTop: 12 }}>
+            <span className="ed-sidebar-strong">MS in AI</span>
+            <br />
+            Northeastern · grad Dec 2026
+          </div>
+          <div className="ed-sidebar-divider">
+            <a href="#connect">Read CV →</a>
+          </div>
+        </div>
       </div>
     </section>
   );

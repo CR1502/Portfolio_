@@ -42,8 +42,8 @@ EXPERIENCE:
    - Collaborated with clinical teams for compliance alignment, decreasing review delays by 15%.
 
 PROJECTS:
-1. AI Candidate Recommender (Aug 2025) - Sentence-BERT, FLAN-T5, Streamlit, NLP
-   End-to-end recruitment system using Sentence-BERT embeddings to match resumes with job descriptions, achieving 89% precision@5. Production-ready Streamlit app with 5-tier ranking. Live: candidaterecommender.streamlit.app, GitHub: github.com/CR1502/CandidateRecommender
+1. AdaptAd (Jan-Apr 2026) - FastAPI, React, Genetic Algorithm, Groq, Gemini, Multi-Agent
+   Two-agent adversarial system (User Advocate vs. Advertiser Advocate) that dynamically shows, swaps, delays, or suppresses ads. 8-gene genetic algorithm evolving decision thresholds using MovieLens 25M and Avazu (40M rows). Multi-provider LLM fallback (Groq → Gemini → template). Live: adaptad.onrender.com, GitHub: github.com/ArzooMJ/AdaptAd
 
 2. NomadAI (Jul-Aug 2025) - RAG, Reddit API, Google Places, AWS S3, Streamlit
    RAG-powered travel platform processing 2,400+ Reddit discussions with sentiment classification across 25 destinations. Live: nomadai.streamlit.app, GitHub: github.com/CR1502/NomadAI

@@ -1,43 +1,29 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useTheme } from './ThemeProvider';
-
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const { toggleTheme } = useTheme();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const links = [
+    ['#experience', 'Experience'],
+    ['#projects',   'Projects'],
+    ['#education',  'Education'],
+    ['#skills',     'Stack'],
+    ['#connect',    'Connect'],
+  ] as const;
 
   return (
-    <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-      <div className="logo" id="logoBtn" title="Try clicking me 7 times...">
-        CR<span>.ai</span>
+    <header className="ed-nav">
+      <div className="ed-nav-brand">
+        <span className="ed-nav-name">Craig Lionel Roberts</span>
       </div>
-      <ul className="nav-links">
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#connect">Connect</a></li>
+      <ul className="ed-nav-links">
+        {links.map(([href, label]) => (
+          <li key={href}>
+            <a href={href}>{label}</a>
+          </li>
+        ))}
       </ul>
-      <div className="nav-r">
-        <div className="status">
-          <div className="status-dot"></div>
-          OPEN TO WORK
-        </div>
-        <div className="tog" id="themeToggle" onClick={toggleTheme} title="Toggle theme">
-          <span className="tog-sun">☀</span>
-          <div className="tog-track">
-            <div className="tog-thumb"></div>
-          </div>
-          <span className="tog-moon">☾</span>
-        </div>
+      <div className="ed-nav-right">
+        <span>Boston</span>
+        <span>·</span>
+        <span className="ed-nav-open">Open to work</span>
       </div>
-    </nav>
+    </header>
   );
 }
