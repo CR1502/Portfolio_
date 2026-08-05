@@ -1,3 +1,5 @@
+import ThemeToggle from '@/components/ThemeToggle';
+
 export default function Nav() {
   const links = [
     ['#experience', 'Experience'],
@@ -23,6 +25,8 @@ export default function Nav() {
         <span>Boston</span>
         <span>·</span>
         <span className="ed-nav-open">Open to work</span>
+        <span>·</span>
+        <ThemeToggle />
       </div>
     </header>
   );

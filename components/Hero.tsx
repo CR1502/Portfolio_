@@ -27,7 +27,7 @@ export default function Hero() {
             Northeastern · grad Dec 2026
           </div>
           <div className="ed-sidebar-divider">
-            <a href="#connect">Read CV →</a>
+            <a href="/Craig_Roberts_Resume.pdf" target="_blank" rel="noreferrer">Read CV →</a>
           </div>
         </div>
       </div>
