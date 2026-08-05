@@ -370,6 +370,15 @@ body {
   font-size: 14px;
   color: var(--ink-soft);
   margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ed-exp-logo {
+  height: 17px;
+  width: auto;
+  opacity: 0.9;
 }
 
 .ed-exp-details {

@@ -1,5 +1,10 @@
 import { experience } from '@/lib/data';
 
+const companyLogos: Record<string, string> = {
+  'Staples': '/logos/staples.svg',
+  'Northeastern University': '/logos/northeastern.svg',
+};
+
 export default function Experience() {
   return (
     <section id="experience" className="ed-section">
@@ -14,7 +19,14 @@ export default function Experience() {
           </div>
           <div>
             <div className="ed-exp-role">{item.role}</div>
-            <div className="ed-exp-company">{item.company}</div>
+            <div className="ed-exp-company">
+              {companyLogos[item.company] ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={companyLogos[item.company]} alt={item.company} className="ed-exp-logo" />
+              ) : (
+                item.company
+              )}
+            </div>
             <ul className="ed-exp-details">
               {item.details.map((d, j) => (
                 <li key={j}>{d}</li>
