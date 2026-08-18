@@ -129,7 +129,7 @@ export const skills: SkillGroup[] = [
 
 export const experience: ExperienceItem[] = [
   {
-    date: 'Jan 2026 – Present',
+    date: 'Jan 2026 – Aug 2026',
     company: 'Staples',
     role: 'AI Engineer Co-op',
     loc: 'Framingham, MA',
@@ -138,7 +138,7 @@ export const experience: ExperienceItem[] = [
       'Engineered deterministic Pydantic validation over LLM output with bulk-request detection, enforcing mandatory fields and controlled values to return a stable, schema-validated JSON contract; shipped through Azure DevOps CI/CD across isolated dev, QA, and prod Unity Catalog environments.',
       'Built a constrained RAG assistant for customer-service reps on Databricks Apps, grounding answers in approved knowledge articles through hybrid lexical and vector retrieval over Azure AI Search with Azure OpenAI embeddings and a GPT-4o-mini endpoint.',
       'Implemented a deterministic guardrail and answer-normalization layer with server-side entitlement filtering across 30 article groups, plus a 9-scorer offline evaluation framework measuring citation accuracy, refusal, and latency over a labeled dataset.',
-      'Designed a multi-engine document-extraction service normalizing Docling, Kreuzberg, and a Gemma 3 12B vision model into one validated schema, with a quality-gated fallback chain that scores each parser and escalates to the vision model for PDFs and images.',
+      'Designed a multi-engine document-extraction service normalizing Docling, Kreuzberg, and a Gemma 3 12B vision model into one validated schema, achieving 90% extraction accuracy at 0.05s average latency across 15+ file formats via a quality-gated fallback chain.',
     ],
   },
   {
@@ -179,8 +179,8 @@ export const education: EducationItem[] = [
   {
     deg: 'MS in Artificial Intelligence',
     school: 'Northeastern University — Khoury College',
-    meta: ['Sep 2024 – May 2026', 'Boston, MA'],
-    gpa: '3.83/4.0',
+    meta: ['Sep 2024 – Dec 2026', 'Boston, MA'],
+    gpa: '3.81/4.0',
     courses: 'AI Capstone, Linear Algebra & Probability, Applied Programming for AI, Machine Learning, NLP, Algorithms, Foundations of AI',
   },
   {
