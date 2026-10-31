@@ -127,7 +127,7 @@ await test("Right-edge dock replaces the old nav, stays centred, and magnifies",
   assert.equal(await page.locator(".nav-wrap .brand").count(), 1);
   assert.deepEqual(
     await page.locator(".dock-item").evaluateAll((els) => els.map((el) => el.getAttribute("href"))),
-    ["#home", "#experience", "#projects", "#education", "#skills", "#connect", "/Craig_Roberts_Resume.pdf"],
+    ["#home", "#experience", "#projects", "#education", "#skills", "#connect", "/Craig_Roberts.pdf"],
   );
   assert.equal(await page.locator('.dock-item[href$=".pdf"]').getAttribute("target"), "_blank");
   for (const y of [0, 4000, 9000]) {

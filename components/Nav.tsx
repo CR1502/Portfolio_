@@ -67,7 +67,7 @@ const items: DockItem[] = [
   {
     id: "resume",
     label: "Résumé",
-    href: "/Craig_Roberts_Resume.pdf",
+    href: "/Craig_Roberts.pdf",
     external: true,
     icon: (
       <>
