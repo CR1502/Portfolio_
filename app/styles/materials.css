@@ -1,0 +1,183 @@
+/* ---------------------------------------------------------------------------
+   Materials. Three surface treatments and one projection, all derived from the
+   single light rig in tokens.css. That shared derivation is what keeps a matte
+   button and a chrome object reading as one world rather than four pastiches.
+
+     matte    (.neu)        baseline, quiet, used site-wide on controls/cards
+     polished (.chrome)     accent, loud, used once in the hero
+     soft     (.inflate)    reward, playful, used in Skills and on tap feedback
+     isometric (.iso)       a camera, not a material -- Projects only
+
+   One material per element, never two. Loudness hierarchy is deliberate:
+   neumorphism is the connective tissue, chrome is the single signature.
+--------------------------------------------------------------------------- */
+
+/* --- matte: soft extruded surface ------------------------------------- */
+.neu {
+  background-image: linear-gradient(
+    var(--light-angle),
+    var(--ink-600),
+    var(--ink-700) 70%
+  );
+  background-color: var(--ink-700);
+  border: 1px solid var(--ink-500);
+  box-shadow:
+    /* highlight toward the light (top-left) */
+    calc(var(--light-dx) * -1 * var(--light-tight))
+      calc(var(--light-dy) * -1 * var(--light-tight)) var(--light-spread)
+      calc(var(--light-spread) * -0.6) var(--highlight-strong),
+    /* shadow away from the light (bottom-right) */
+    calc(var(--light-dx) * var(--light-tight))
+      calc(var(--light-dy) * var(--light-tight)) var(--light-spread)
+      calc(var(--light-spread) * -0.4) var(--ink-900),
+    inset 0 1px 0 var(--highlight);
+  transition:
+    box-shadow var(--dur-2) var(--ease-out-quint),
+    transform var(--dur-2) var(--ease-out-quint),
+    background-color var(--dur-2) var(--ease-out-quint);
+}
+
+/* Pressed state: the surface sinks, so the shadows invert inward. A real
+   pressed state is the whole point of the material -- without it this is just
+   a gradient. Applies to pointer and touch alike. */
+.neu:active,
+.neu[aria-pressed="true"],
+.neu[data-pressed] {
+  transform: translateY(1px);
+  box-shadow:
+    inset calc(var(--light-dx) * var(--light-tight) * 0.7)
+      calc(var(--light-dy) * var(--light-tight) * 0.7)
+      calc(var(--light-spread) * 0.7) var(--ink-900),
+    inset calc(var(--light-dx) * -1 * var(--light-tight) * 0.5)
+      calc(var(--light-dy) * -1 * var(--light-tight) * 0.5)
+      calc(var(--light-spread) * 0.5) var(--highlight);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .neu:hover {
+    background-color: var(--ink-600);
+    box-shadow:
+      calc(var(--light-dx) * -1 * var(--light-tight))
+        calc(var(--light-dy) * -1 * var(--light-tight))
+        calc(var(--light-spread) * 1.3) calc(var(--light-spread) * -0.5)
+        var(--highlight-strong),
+      calc(var(--light-dx) * var(--light-tight) * 1.4)
+        calc(var(--light-dy) * var(--light-tight) * 1.4)
+        calc(var(--light-spread) * 1.5) calc(var(--light-spread) * -0.3)
+        var(--ink-900),
+      inset 0 1px 0 var(--highlight);
+  }
+}
+
+/* --- polished: liquid chrome ------------------------------------------
+   The CSS half. The hero object itself is WebGL (see SpatialBackground); this
+   covers chrome accents on type and rules, where a reflective sweep reads as
+   the same material without costing a draw call. */
+.chrome-text {
+  background-image: linear-gradient(
+    var(--light-angle),
+    var(--text) 0%,
+    var(--cyan) 28%,
+    var(--text) 46%,
+    var(--amber) 68%,
+    var(--text) 86%
+  );
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- soft: inflated ----------------------------------------------------
+   Puffy, high-clearcoat, squashable. The clearcoat is a tight bright highlight
+   near the light plus a broad soft one, which is what separates "inflated"
+   from "rounded rectangle with a gradient". */
+.inflate {
+  border-radius: var(--r-4);
+  background-image:
+    radial-gradient(
+      120% 90% at 28% 18%,
+      var(--highlight-strong) 0%,
+      transparent 52%
+    ),
+    linear-gradient(var(--light-angle), var(--ink-600), var(--ink-700));
+  background-color: var(--ink-700);
+  border: 1px solid var(--ink-500);
+  box-shadow:
+    inset 0 2px 1px var(--highlight-strong),
+    inset 0 -10px 20px -12px var(--ink-900),
+    calc(var(--light-dx) * 4px) calc(var(--light-dy) * 10px) 24px -14px
+      var(--ink-900);
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    box-shadow var(--dur-2) var(--ease-out-quint);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .inflate:hover {
+    transform: scale(1.035, 0.965); /* squash */
+  }
+}
+.inflate:active,
+.inflate[data-pressed] {
+  transform: scale(0.955, 1.03); /* stretch, the opposite of squash */
+}
+
+/* --- isometric: a projection, not a surface ---------------------------
+   True isometric is a 30deg rotation on each horizontal axis. Children opt in
+   to the shared 3D space so the chrome material reads correctly across faces. */
+.iso {
+  transform: rotateX(30deg) rotateZ(-30deg);
+  transform-style: preserve-3d;
+}
+.iso-stage {
+  perspective: none; /* orthographic: no convergence, true isometric */
+  transform-style: preserve-3d;
+}
+
+/* --- accessibility fallbacks ------------------------------------------
+   Reduce Transparency and Increase Contrast both want flat, high-contrast
+   fills rather than layered light. Reduce Motion drops squash entirely. */
+@media (prefers-contrast: more) {
+  .neu,
+  .inflate {
+    background-image: none;
+    background-color: var(--ink-700);
+    border-color: var(--text);
+    box-shadow: none;
+  }
+  .chrome-text {
+    background-image: none;
+    color: var(--text);
+    -webkit-text-fill-color: var(--text);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .neu,
+  .inflate {
+    background-image: none;
+    background-color: var(--ink-700);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inflate:hover,
+  .inflate:active,
+  .inflate[data-pressed],
+  .neu:active,
+  .neu[data-pressed] {
+    transform: none;
+  }
+}
+
+/* Chrome text needs a painted fallback wherever background-clip:text is not
+   honoured, or the text disappears entirely. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .chrome-text {
+    background-image: none;
+    color: var(--text);
+    -webkit-text-fill-color: var(--text);
+  }
+}

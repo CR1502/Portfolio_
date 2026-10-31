@@ -1,13 +1,15 @@
 export default function Footer() {
   return (
-    <footer className="ed-footer">
-      <a href="#connect" className="ed-footer-link">contact</a>
+    <footer className="footer">
+      <a className="brand" href="#home" aria-label="Back to top">
+        cr<span>.</span>
+      </a>
       <span>
-        <a href="https://github.com/CR1502" target="_blank" rel="noreferrer" className="ed-footer-link">github</a>
-        {' · '}
-        <a href="https://linkedin.com/in/croberts02" target="_blank" rel="noreferrer" className="ed-footer-link">linkedin</a>
+        Craig Lionel Roberts <span className="footer-divider">/</span> Built
+        with intention.
       </span>
-      <span>© MMXXVI</span>
+      <a href="#home">Back to top ↑</a>
+      <span>© {new Date().getFullYear()}</span>
     </footer>
   );
 }

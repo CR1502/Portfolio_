@@ -1,0 +1,217 @@
+.connect-section {
+  padding-bottom: var(--sp-8);
+}
+.connect-section h2 {
+  font-size: var(--step-6);
+  margin-top: var(--sp-2);
+}
+.connect-section h2 em {
+  color: var(--amber);
+}
+.connect-intro {
+  max-width: 44ch;
+  margin-top: var(--sp-3);
+  font-size: var(--step-1);
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.contact-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--sp-6);
+  margin-top: var(--sp-5);
+}
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-1) var(--sp-2);
+  align-items: center;
+  min-width: 0;
+  padding-block: var(--sp-3);
+  border-bottom: 1px solid var(--line);
+}
+.contact-label {
+  grid-column: 1;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.contact-value {
+  grid-column: 1;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.contact-arrow {
+  grid-column: 2;
+  grid-row: 1/3;
+  font-size: var(--step-2);
+  color: var(--amber);
+  transition: transform var(--dur-2);
+}
+.contact-row:hover .contact-arrow {
+  transform: translate(3px, -3px);
+}
+.contact-row:hover .contact-value {
+  color: var(--cyan);
+}
+@media (max-width: 50rem) {
+  .contact-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding-block: var(--sp-4);
+  font-size: var(--step--1);
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.footer > .brand {
+  margin-right: 0;
+}
+.footer > a:not(.brand) {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+}
+.footer-divider {
+  margin-inline: var(--sp-1);
+  color: var(--amber);
+}
+.signal-experiment {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.signal-experiment button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  font-size: var(--step--1);
+}
+.signal-experiment [role="status"] {
+  font-size: var(--step--1);
+}
+.contact-form {
+  max-width: 48rem;
+  margin-top: var(--sp-5);
+}
+.contact-mode {
+  padding: 0;
+  border: 0;
+  margin: 0 0 var(--sp-4);
+  min-width: 0;
+}
+.contact-mode legend {
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin-bottom: var(--sp-2);
+}
+.contact-mode > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.contact-mode button {
+  padding: var(--sp-2) var(--sp-3);
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font-size: var(--step-0);
+}
+.contact-mode button[aria-pressed="true"] {
+  background: #1d3d5e;
+  border-color: var(--cyan);
+}
+.contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+.contact-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--step--1);
+  color: var(--muted);
+  min-width: 0;
+}
+.contact-fields input,
+.contact-fields textarea {
+  width: 100%;
+  min-width: 0;
+  padding: var(--sp-2);
+  border: 1px solid #7ec3eb40;
+  border-radius: var(--r-2);
+  background: #0a1626b3;
+  color: var(--text);
+  font: var(--step-0) var(--font-body);
+  min-height: 48px;
+}
+.contact-fields textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+.contact-fields input:focus-visible,
+.contact-fields textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+.form-wide {
+  grid-column: 1/-1;
+}
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+.callback-consent {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  font-size: var(--step--1);
+  min-height: 44px;
+}
+.callback-consent input {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--cyan);
+}
+.form-notice,
+.form-status {
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: var(--sp-3);
+}
+.contact-form > button {
+  margin-top: var(--sp-3);
+}
+.contact-form > button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.contact-socials {
+  display: flex;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+.contact-socials a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--step-0);
+}
+@media (max-width: 40rem) {
+  .contact-fields {
+    grid-template-columns: 1fr;
+  }
+}

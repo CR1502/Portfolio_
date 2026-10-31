@@ -1,0 +1,43 @@
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+*::before,
+*::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .button:hover,
+.button:active {
+    transform: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: #10202c;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #c4d3de;
+    --line: #718595;
+  }
+  .glass {
+    background: #10202c;
+    border-color: #9bafbc;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .project-tags span {
+    border-color: var(--muted);
+    color: var(--text);
+  }
+}
+@supports not (backdrop-filter: blur(20px)) {
+  .glass {
+    background: #10202c;
+  }
+}

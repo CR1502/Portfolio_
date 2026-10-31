@@ -1,0 +1,43 @@
+/* One opaque shader canvas. No canvas transforms, filters, fades or CSS animation. */
+.soffit-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.soffit-background canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  filter: none;
+  animation: none;
+  transition: none;
+  opacity: 1;
+}
+body {
+  background: #2a2436;
+}
+.nav-links {
+  background: #211c2ceb;
+}
+.nav-toggle.glass {
+  background: #211c2cbf;
+  border-color: #cfc4e855;
+}
+.brand,
+.nav-contact {
+  background: #211c2ce6;
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .nav-toggle.glass,
+  .nav-links {
+    background: #211c2c;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+.project-dialog {
+  background-color: rgb(33 28 44 / var(--project-glass-opacity));
+  border-color: #cfc4e855;
+}

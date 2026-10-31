@@ -1,0 +1,57 @@
+/* Componentry-style native sticky sequence, with the portfolio's card material. */
+.sticky-projects {
+  overflow: visible;
+  padding-bottom: 0;
+}
+.sticky-projects .orbit-heading {
+  margin-bottom: var(--sp-5);
+}
+.sticky-project-stack {
+  position: relative;
+  padding-bottom: 30svh;
+}
+.sticky-project-step {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 6rem var(--gutter-left) 3rem var(--gutter-right);
+  pointer-events: none;
+}
+.sticky-project-step .sticky-project-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: min(78vw, 24rem);
+  margin: 0;
+  transform-origin: center top;
+  transform: translateY(calc(min(var(--stack-order), 6) * 5px)) scale(var(--stack-scale, 1)) rotate(var(--stack-tilt));
+  transition: none;
+  pointer-events: auto;
+}
+.sticky-project-step[inert] .sticky-project-card {
+  pointer-events: none;
+}
+.sticky-project-card .orbit-card-open {
+  cursor: pointer;
+}
+@media (max-width: 50rem) {
+  .sticky-project-step {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+  .sticky-project-step .sticky-project-card {
+    width: min(84vw, 24rem);
+  }
+}
+/* A card must fit before it can pin. Short viewports and enlarged text use
+   the same content as a normal list, so no copy or control is trapped. */
+@media (max-height: 699px), (prefers-reduced-motion: reduce) {
+  .sticky-project-stack { padding-bottom: var(--sp-6); }
+  .sticky-project-step { position: relative; min-height: 0; padding-block: var(--sp-4); }
+  .sticky-project-step .sticky-project-card { transform: none; }
+}
+:root[data-large-type="true"] .sticky-project-stack { padding-bottom: var(--sp-6); }
+:root[data-large-type="true"] .sticky-project-step { position: relative; min-height: 0; padding-block: var(--sp-4); }
+:root[data-large-type="true"] .sticky-project-step .sticky-project-card { transform: none; }

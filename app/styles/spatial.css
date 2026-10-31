@@ -1,0 +1,218 @@
+/* A continuous scene gives the scroll a sense of depth. */
+.spatial-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+body::before {
+  background:
+    radial-gradient(
+      ellipse at 90% 15%,
+      color-mix(in srgb, var(--blue) 12%, transparent),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at 10% 75%,
+      color-mix(in srgb, var(--orange) 6%, transparent),
+      transparent 60%
+    );
+}
+.glass {
+  background: color-mix(in srgb, var(--bg) 76%, transparent);
+  border-color: color-mix(in srgb, var(--text) 22%, transparent);
+}
+.intro-journey {
+  height: auto;
+  position: relative;
+}
+.intro-sticky {
+  position: relative;
+  height: auto;
+}
+.hero.quote-hero {
+  display: flex;
+  align-items: center;
+  padding-top: 105px;
+  padding-bottom: 80px;
+  min-height: min(50rem, 90svh);
+}
+.quote-hero h1 {
+  font-size: var(--step-5);
+  margin-block: 30px;
+  white-space: normal;
+  line-height: 1.12;
+}
+.quote-hero h1 em {
+  color: var(--text);
+}
+.quote-hero .hero-description {
+  max-width: 470px;
+}
+.intro-copy {
+  transform-origin: left center;
+  max-width: 850px;
+}
+.intro-copy:focus-within {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.intro-scroll {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+  font:
+    var(--step--1) var(--font-ui),
+    monospace;
+  letter-spacing: 0.08em;
+}
+.intro-scroll > span:last-child {
+  color: var(--orange);
+}
+#experience {
+  margin-top: 0;
+}
+
+.project-piece,
+.project-piece.piece-kube,
+.project-piece.piece-aeo {
+  background:
+    radial-gradient(
+      ellipse at 65% 20%,
+      color-mix(in srgb, var(--blue) 12%, transparent),
+      transparent 70%
+    ),
+    color-mix(in srgb, var(--bg) 94%, var(--blue));
+  border-color: var(--line);
+}
+.project-piece.is-active {
+  border-color: color-mix(in srgb, var(--blue) 50%, var(--bg));
+}
+.project-dialog {
+  border-color: var(--line);
+}
+
+.piece-copy h3,
+.metrics strong,
+.project-dialog h2 {
+  color: var(--text);
+}
+.education-card {
+  background: color-mix(in srgb, var(--bg) 95%, var(--blue));
+}
+.education-card .gpa {
+  color: var(--blue);
+}
+.project-tags span {
+  color: var(--muted);
+  border-color: var(--line);
+}
+.project-tags span:first-child {
+  color: var(--orange);
+}
+.dialog-subtitle {
+  color: var(--text);
+}
+.metrics > div:first-child strong {
+  color: var(--orange);
+}
+
+.footer {
+  padding-bottom: 120px;
+}
+@media (max-width: 760px) {
+  .hero.quote-hero {
+    padding-top: 130px;
+    padding-bottom: 95px;
+    align-items: center;
+  }
+  .quote-hero h1 {
+    font-size: var(--step-5);
+  }
+  .quote-hero .eyebrow {
+    font-size: var(--step--1);
+  }
+  .quote-hero .hero-description {
+    font-size: var(--step-0);
+  }
+  .spatial-background {
+    opacity: 0.55;
+  }
+}
+@media (prefers-reduced-motion: reduce), (max-height: 620px) {
+  .intro-journey {
+    height: auto;
+  }
+  .intro-sticky {
+    position: relative;
+    height: auto;
+  }
+  .intro-copy {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero.quote-hero {
+    min-height: 730px;
+  }
+}
+@media (prefers-contrast: more) {
+  .spatial-background {
+    display: none;
+  }
+  .glass {
+    background: var(--bg);
+    border-color: var(--text);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--bg);
+  }
+}
+
+/* Enlarged text must expand the introduction rather than sit inside a pin. */
+:root[data-large-type="true"] .intro-journey {
+  height: auto;
+}
+:root[data-large-type="true"] .intro-sticky {
+  position: relative;
+  height: auto;
+}
+:root[data-large-type="true"] .intro-copy {
+  opacity: 1 !important;
+  transform: none !important;
+}
+:root[data-large-type="true"] .hero.quote-hero {
+  min-height: min(50rem, 90svh);
+}
+
+/* A short or touch-sized introduction scrolls natively. Never pin controls
+   below the fold where the next section can cover them. */
+@media (max-width: 62.5rem), (max-height: 50rem) {
+  .intro-journey {
+    height: auto;
+  }
+  .intro-sticky {
+    position: relative;
+    height: auto;
+  }
+  .hero.quote-hero {
+    min-height: 100svh;
+  }
+  .intro-copy {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

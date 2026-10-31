@@ -1,0 +1,91 @@
+/* Concave arc collection: original card materials, new gesture-driven layout. */
+.arc-projects {
+  overflow: clip;
+}
+.arc-stage {
+  height: 45rem;
+  width: 100%;
+  max-width: none;
+  overflow: clip;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 45rem;
+}
+.arc-stage[data-dragging="true"],
+.arc-stage[data-dragging="true"] .orbit-card-open {
+  cursor: grabbing;
+}
+.arc-stage .arc-card {
+  top: 55%;
+  transform-origin: center;
+  transition: none;
+  will-change: transform;
+}
+.arc-card:not(.is-active) .orbit-card-open {
+  cursor: grab;
+}
+.arc-projects .orbit-arrows > p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+.arc-projects .orbit-arrows strong {
+  font-weight: 500;
+  font-size: var(--step-1);
+}
+.arc-projects .orbit-arrows .arc-active-date {
+  font-size: var(--step--1);
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+.arc-projects .orbit-index {
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.arc-projects .orbit-index button {
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  min-width: 44px;
+  min-height: 44px;
+}
+.arc-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--muted);
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: width 180ms ease, opacity 180ms ease;
+}
+.arc-projects .orbit-index button[aria-pressed="true"] {
+  background: transparent;
+}
+.arc-projects .orbit-index button[aria-pressed="true"] .arc-dot {
+  width: 22px;
+  opacity: 1;
+  background: var(--text);
+  border-radius: 8px;
+}
+@media (max-width: 50rem) {
+  .arc-stage {
+    height: 40rem;
+    contain-intrinsic-size: auto 40rem;
+  }
+  .arc-stage .arc-card { top: 54%; }
+  .arc-projects .orbit-arrows { gap: var(--sp-2); }
+  .arc-projects .orbit-arrows > p { flex: 1; }
+  .arc-projects .orbit-index { max-width: 19rem; }
+}
+:root[data-large-type="true"] .arc-stage {
+  height: 64rem;
+  contain-intrinsic-size: auto 64rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .arc-dot { transition: none; }
+}

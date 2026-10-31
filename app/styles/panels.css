@@ -1,0 +1,161 @@
+/* Reading panels: every text section sits in a rounded box of the same dark glass as
+   the project notes (.project-dialog), so the liquid shows through and around them. */
+.section.panel {
+  width: var(--page-width);
+  max-width: none;
+  margin-inline: auto;
+  margin-block: clamp(var(--sp-3), 2.5vw, var(--sp-6));
+  padding: clamp(var(--sp-5), 5vw, var(--sp-8)) clamp(var(--sp-3), 4.5vw, var(--sp-8));
+  border: 1px solid rgb(222 240 250 / 0.24);
+  border-radius: clamp(1.5rem, 1rem + 1.5vw, 2.75rem);
+  background: rgb(12 25 42 / 0.7);
+  box-shadow:
+    inset 0 1px 0 #ffffff14,
+    0 30px 80px #02050b66;
+  backdrop-filter: blur(12px) saturate(1.35) brightness(0.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.35) brightness(0.4);
+}
+.experience-body > p:not(.company),
+.experience-body li {
+  max-width: 75ch;
+}
+/* Wide About panels set the lead line across the top and the two short paragraphs
+   side by side beneath it, instead of one narrow column beside empty space. */
+@media (min-width: 100rem) {
+  .about-editorial .about-copy {
+    max-width: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-3) var(--sp-6);
+  }
+  .about-editorial .about-copy p:first-child {
+    grid-column: 1 / -1;
+    max-width: 48ch;
+  }
+  .about-editorial .about-copy p + p {
+    margin-top: 0;
+  }
+}
+:root[data-large-type="true"] .about-editorial .about-copy {
+  display: block;
+}
+
+/* Wide panels set Technical and Teaching side by side instead of one long column.
+   Each category is a container, so a role stacks its dates above its body whenever
+   its own column is narrow, whatever the viewport. */
+.experience-groups {
+  display: grid;
+  gap: var(--sp-6);
+}
+.experience-groups .experience-category + .experience-category {
+  margin-top: 0;
+}
+.experience-category {
+  container-type: inline-size;
+}
+@media (min-width: 100rem) {
+  .experience-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(var(--sp-6), 5vw, var(--sp-8));
+    align-items: start;
+  }
+}
+@container (max-width: 46rem) {
+  .experience-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-2);
+  }
+  .experience-date {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: var(--sp-3);
+  }
+}
+:root[data-large-type="true"] .experience-groups {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Static posters: the projects after the latest four, in the sticky cards' material. */
+.project-posters-wrap {
+  width: var(--page-width);
+  margin: 0 auto;
+  padding-bottom: var(--sp-7);
+}
+.project-posters-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  font-size: var(--step-2);
+  color: var(--text);
+}
+.project-posters-title span {
+  font: var(--step--1) var(--font-ui);
+  color: var(--muted);
+}
+.project-posters {
+  display: grid;
+  grid-template-columns: repeat(var(--poster-columns, 1), minmax(0, 1fr));
+  gap: clamp(var(--sp-3), 2vw, var(--sp-5));
+}
+@media (min-width: 40rem) {
+  .project-posters { --poster-columns: 2; }
+}
+@media (min-width: 90rem) {
+  .project-posters { --poster-columns: 4; }
+}
+/* Media queries ignore an enlarged root size, so large text sizes the grid in rem. */
+:root[data-large-type="true"] .project-posters {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+}
+.orbit-card.project-poster {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: auto;
+  transform: none;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 0;
+  padding: var(--sp-2);
+  transition: translate var(--dur-2) var(--ease-out-quint);
+}
+.project-poster .orbit-art {
+  aspect-ratio: 1.36;
+}
+.project-poster .orbit-copy {
+  justify-content: flex-start;
+  padding: var(--sp-3) var(--sp-2) var(--sp-2);
+}
+.project-poster .orbit-copy h3 {
+  font-size: var(--step-2);
+  margin-bottom: var(--sp-2);
+}
+.project-poster .orbit-sub {
+  margin-bottom: var(--sp-3);
+}
+.project-poster .orbit-tags {
+  margin-top: auto;
+}
+.project-poster .orbit-read {
+  margin-top: var(--sp-1);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-poster:hover {
+    translate: 0 -4px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .sticky-project-card {
+    border: 2px solid #e6f4ff;
+    box-shadow: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .section.panel {
+    background: #0c192a;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

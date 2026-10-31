@@ -1,26 +1,41 @@
-import { education } from '@/lib/data';
+import { education } from "@/lib/data";
 
 export default function Education() {
   return (
-    <section id="education" className="ed-section">
-      <div className="ed-section-header">
-        <div className="ed-label">§ 03 · Education</div>
-
-      </div>
-      {education.map((item, i) => (
-        <div key={i} className="ed-edu-item">
-          <div className="ed-edu-meta">
-            <div>{item.meta[0]}</div>
-            <div>{item.meta[1]}</div>
-            <div style={{ marginTop: 8 }}>GPA: {item.gpa}</div>
-          </div>
-          <div>
-            <div className="ed-edu-deg">{item.deg}</div>
-            <div className="ed-edu-school">{item.school}</div>
-            <div className="ed-edu-courses">{item.courses}</div>
-          </div>
+    <section
+      id="education"
+      className="section panel"
+      aria-labelledby="education-title"
+    >
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">Academic background</p>
+          <h2 id="education-title">Education.</h2>
         </div>
-      ))}
+      </div>
+      <div className="education-list">
+        {education.map((item) => (
+          <article className="education-entry" key={item.deg}>
+            <div className="education-dates">
+              <p>{item.meta[0]}</p>
+              <p>{item.meta[1]}</p>
+            </div>
+            <div className="education-details">
+              <h3>{item.deg}</h3>
+              <p className="education-school">{item.school}</p>
+              <p className="education-grade">
+                GPA <span>{item.gpa}</span>
+              </p>
+              <details className="education-coursework">
+                <summary>
+                  Coursework <span aria-hidden="true">＋</span>
+                </summary>
+                <p>{item.courses}</p>
+              </details>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

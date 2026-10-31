@@ -1,0 +1,244 @@
+html {
+  /* Percentage, not px: a fixed body font-size silently defeats every browser
+     and OS text-size setting, which the whole fluid scale depends on. */
+  font-size: 100%;
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-3));
+  -webkit-text-size-adjust: 100%;
+}
+/* Smooth scrolling is opt-in: it must never fight Reduce Motion, and the
+   viewport harness needs instant programmatic scrolls. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  margin: 0;
+  isolation: isolate;
+  background: var(--ink-800);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  letter-spacing: var(--track-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Bottom inset keeps the footer clear of the home indicator. */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+/* The environment. One directional field lit from the same angle as every
+   material, so the page reads as a single lit space. This is also the image the
+   chrome env map is generated from, which is why the stops are cyan-high and
+   amber-low rather than symmetric. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      70% 50% at 78% 4%,
+      color-mix(in srgb, var(--cyan) 20%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      60% 55% at 12% 96%,
+      color-mix(in srgb, var(--amber) 13%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(var(--light-angle), var(--ink-700) 0%, var(--ink-900) 100%);
+}
+
+/* A faint measurement grid: the instrument-panel reference the palette comes
+   from. Fixed, so content parallaxes against it as you scroll. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(to right, var(--ink-500) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ink-500) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(130% 90% at 50% 0%, #000 10%, transparent 72%);
+  -webkit-mask-image: radial-gradient(
+    130% 90% at 50% 0%,
+    #000 10%,
+    transparent 72%
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+a,
+button,
+summary {
+  touch-action: manipulation;
+}
+button,
+a,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+  border-radius: var(--r-1);
+}
+::selection {
+  background: color-mix(in srgb, var(--cyan) 45%, transparent);
+  color: var(--text);
+}
+
+/* Every interactive element meets the platform hit-target floor. The old rules
+   set min-height only, which left the nav links 32px wide. */
+a[href],
+button,
+summary,
+[role="button"] {
+  min-height: var(--target);
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.08;
+  font-weight: 700;
+  text-wrap: balance;
+}
+/* Tracking scales with size instead of one flat value across every heading. */
+h1 {
+  font-size: var(--step-7);
+  letter-spacing: var(--track-display);
+}
+h2 {
+  font-size: var(--step-5);
+  letter-spacing: var(--track-display);
+}
+h3 {
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: var(--track-head);
+}
+p {
+  text-wrap: pretty;
+}
+/* Accents contrast by weight within one family, Apple-style, rather than by a
+   second typeface: a light word set against a heavy one. */
+em {
+  font-family: inherit;
+  font-weight: 300;
+  font-style: normal;
+}
+svg {
+  display: block;
+}
+main {
+  overflow: clip;
+}
+/* Gutters fold in the horizontal safe-area insets, so landscape on a notched
+   phone never tucks content under the sensor housing. */
+.section,
+.hero,
+.footer {
+  width: var(--page-width);
+  margin-inline: auto;
+}
+.section {
+  padding-block: clamp(var(--sp-6), 9vw, var(--sp-8));
+  border-top: 1px solid var(--line);
+}
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.blue {
+  color: var(--cyan);
+}
+
+/* Glass stays on the floating functional layer only -- the nav. Content now
+   uses the matte material in materials.css. */
+.glass {
+  background: color-mix(in srgb, var(--ink-700) 72%, transparent);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid var(--ink-500);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 12px 40px color-mix(in srgb, var(--ink-900) 60%, transparent);
+}
+
+/* One field at a time: the static grid is the no-JS / reduced-motion fallback. */
+.interactive-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.48;
+}
+.field-ready body::after {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+  .interactive-field {
+    display: none;
+  }
+}
+
+/* Slow colour parallax follows scroll position without changing scroll physics. */
+body::before {
+  inset: -10%;
+  transform: translateY(calc(var(--scene-shift, 0px) * -0.4));
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  left: var(--sp-2);
+  top: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--ink-700);
+  color: var(--text);
+  border: 1px solid var(--cyan);
+  border-radius: var(--r-2);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+html[data-signal="true"] body::before {
+  animation: field-signal 2.4s ease-out;
+}
+@keyframes field-signal {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  25% {
+    filter: brightness(1.55);
+  }
+}

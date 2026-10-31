@@ -1,0 +1,248 @@
+/* Soffit is the one moving visual. Typography and matte content belong to
+   the same lavender light; the Orbit fan retains its original geometry. */
+body {
+  background: var(--ink-800);
+}
+.scene-hero::before {
+  content: none;
+}
+.hero.hero-soffit {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  min-height: 100svh;
+  padding-top: clamp(8rem, 16svh, 12rem);
+  padding-bottom: var(--sp-5);
+}
+.hero-soffit .hero-kicker {
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+.hero-soffit .status-dot {
+  background: var(--text);
+  box-shadow: none;
+}
+.hero-soffit .hero-scene {
+  min-height: 0;
+  margin-block: var(--sp-5);
+  display: block;
+}
+.hero.hero-soffit h1 {
+  max-width: 64rem;
+  font-family: var(--font-body);
+  font-size: var(--step-7);
+  line-height: 1.03;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px #18141f80;
+  margin: 0;
+  overflow-wrap: anywhere;
+  hyphens: none;
+}
+.hero.hero-soffit h1 em {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.hero.hero-soffit h1 > span {
+  font-size: 0.64em;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  margin-top: 0.18em;
+}
+.hero-soffit .hero-context {
+  margin-top: var(--sp-4);
+  color: var(--text);
+}
+.hero-soffit .cinematic-hero-footer {
+  align-items: center;
+  gap: var(--sp-4);
+}
+.hero-soffit .hero-description {
+  font-weight: 500;
+  max-width: 46ch;
+  font-size: var(--step-0);
+  line-height: 1.75;
+  color: var(--text);
+}
+.hero-soffit .hero-actions {
+  flex-shrink: 0;
+  gap: var(--sp-2);
+}
+.hero-soffit .hero-actions .neu {
+  background: var(--ink-800);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 1px 0 var(--highlight);
+}
+.hero-soffit .hero-location {
+  margin-top: var(--sp-4);
+  color: var(--text);
+}
+/* About reads inside a rounded panel (panels.css); the liquid shows around it. */
+.section.about-editorial {
+  display: block;
+}
+.about-editorial-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--sp-6);
+  align-items: start;
+}
+.about-editorial .section-heading {
+  width: auto;
+  margin: 0;
+}
+.about-editorial h2 {
+  font-family: var(--font-body);
+  font-size: var(--step-5);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: var(--track-display);
+  text-transform: none;
+}
+.about-editorial h2 em {
+  color: var(--muted);
+}
+.about-editorial .about-copy {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  max-width: 58ch;
+  display: block;
+  color: var(--muted);
+  background: transparent;
+}
+.about-editorial .about-copy p:first-child {
+  font-weight: 500;
+  font-size: var(--step-1);
+  line-height: 1.65;
+  color: var(--text);
+}
+.about-editorial .about-copy p + p {
+  margin-top: var(--sp-3);
+}
+/* Pearl-lavender cards share the field's light instead of introducing a
+   separate cream-and-blue palette. No changes to fan positions or sizes. */
+.orbit-projects {
+  background: none;
+}
+.orbit-heading h2,
+.connect-section h2 {
+  font-family: var(--font-body);
+  font-size: var(--step-6);
+  font-weight: 700;
+  line-height: 1.08;
+  text-transform: none;
+  letter-spacing: var(--track-display);
+}
+.orbit-heading h2 em,
+.connect-section h2 em {
+  color: var(--muted);
+}
+.orbit-card {
+  background: #e8e0f2;
+  color: #292133;
+  border-color: #f5eeff80;
+  box-shadow:
+    inset 0 1px 0 #fff9,
+    calc(var(--light-dx) * 10px) calc(var(--light-dy) * 25px) 55px #18141f66;
+}
+.orbit-art {
+  background: #30283f;
+  border-color: #4e446855;
+}
+.orbit-number {
+  background: #292133;
+  color: #f5eeff;
+  border-color: #cfc4e855;
+}
+.orbit-open-icon {
+  background: #e8e0f2;
+  color: #292133;
+}
+.orbit-copy h3 {
+  color: #292133;
+}
+.orbit-date,
+.orbit-tags {
+  color: #5b4d6a;
+}
+.orbit-sub {
+  color: #463a54;
+}
+.orbit-tags {
+  border-top-color: #4e44682e;
+}
+.orbit-arrows > button,
+.orbit-index button {
+  background: #2a2436;
+  border-color: #8f7fc0;
+}
+.orbit-index button[aria-pressed="true"] {
+  background: #cfc4e8;
+  color: #18141f;
+  border-color: #cfc4e8;
+}
+@media (max-width: 62.5rem) {
+  .hero-soffit .cinematic-hero-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+}
+@media (max-width: 50rem) {
+  .hero.hero-soffit {
+    padding-top: 8rem;
+    padding-bottom: var(--sp-5);
+    min-height: 100svh;
+  }
+  .hero-soffit .hero-scene {
+    margin-block: var(--sp-4);
+  }
+  .hero.hero-soffit h1 {
+    font-size: var(--step-6);
+  }
+  .hero-soffit .hero-context {
+    margin-top: var(--sp-3);
+  }
+  .about-editorial-inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+  .orbit-heading h2,
+  .connect-section h2 {
+    font-size: var(--step-5);
+  }
+}
+:root[data-large-type="true"] .hero.hero-soffit h1 {
+  font-size: var(--step-5);
+  max-width: 100%;
+}
+:root[data-large-type="true"] .hero.hero-soffit h1 em {
+  font-size: 1em;
+}
+:root[data-large-type="true"] .hero-soffit .hero-actions {
+  flex-shrink: 1;
+}
+:root[data-large-type="true"] .about-editorial-inner {
+  grid-template-columns: 1fr;
+}
+@media (prefers-contrast: more) {
+  .orbit-card {
+    border: 2px solid #292133;
+    box-shadow: none;
+  }
+}
+/* Two-tone focus stays visible across both the pale card and dark field. */
+.orbit-card .orbit-card-open:focus-visible {
+  outline: 3px solid #292133;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 8px #f5eeff;
+}
