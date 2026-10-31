@@ -1,0 +1,152 @@
+/* Motion is an enhancement; it never gates content or changes hit targets. */
+.cursor-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0;
+}
+.cursor-indicator::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid color-mix(in srgb, var(--cyan) 55%, transparent);
+  border-radius: 50%;
+  transition: scale var(--dur-1) var(--ease-out-quint);
+}
+.cursor-indicator.over-action::before {
+  scale: 1.5;
+}
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 2px;
+  z-index: 30;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+.section-heading,
+.experience-row,
+.education-entry,
+.skill-row,
+.contact-row {
+  transition:
+    opacity 650ms ease,
+    translate 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 200ms ease;
+}
+/* An element waiting to reveal is invisible, so it must not be clickable or
+   focusable in the meantime -- otherwise it is a target nobody can see. */
+.reveal-pending {
+  opacity: 0;
+  translate: 0 24px;
+  pointer-events: none;
+}
+.reveal-pending a,
+.reveal-pending button,
+.reveal-pending summary {
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .education-card {
+    position: relative;
+    isolation: isolate;
+    transform: perspective(1200px) rotateX(var(--tilt-x, 0deg))
+      rotateY(var(--tilt-y, 0deg));
+    transition:
+      transform 350ms ease-out,
+      opacity 650ms ease,
+      translate 650ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 200ms ease;
+  }
+  .education-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(
+      400px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      color-mix(in srgb, var(--blue) 6%, transparent),
+      transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 350ms ease;
+  }
+  .pointer-over::after {
+    opacity: 1;
+  }
+
+  .button > span,
+  .nav-contact > span {
+    display: inline-block;
+    transition: transform 200ms ease;
+  }
+  .button:hover > span,
+  .nav-contact:hover > span {
+    transform: translate(2px, -2px);
+  }
+  .primary:hover {
+    box-shadow: 0 4px 30px color-mix(in srgb, var(--blue) 21%, transparent);
+  }
+}
+@media (pointer: coarse),
+  (prefers-reduced-transparency: reduce),
+  (prefers-contrast: more) {
+  .cursor-indicator {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-indicator,
+  .scroll-progress {
+    display: none;
+  }
+  .reveal-pending,
+  .reveal-pending a,
+  .reveal-pending button,
+  .reveal-pending summary {
+    opacity: 1;
+    translate: none;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-contrast: more), print {
+  body::before {
+    display: none;
+  }
+}
+
+/* Warm accents balance the blue system visuals. */
+.experience-section .section-heading h2 em,
+.connect-section h2 em {
+  color: var(--orange);
+}
+.experience-section .eyebrow,
+#projects .eyebrow,
+#education .eyebrow {
+  color: var(--orange);
+}
+.experience-row {
+  border-left: 2px solid color-mix(in srgb, var(--orange) 27%, transparent);
+  padding-left: 24px;
+}
+.metrics > div:first-child strong {
+  color: var(--orange);
+}
+.project-tags span:first-child {
+  border-color: color-mix(in srgb, var(--orange) 31%, transparent);
+  color: #ffac94;
+  background: color-mix(in srgb, var(--orange) 3%, transparent);
+}
+.scroll-progress {
+  background: linear-gradient(90deg, var(--blue) 15%, var(--orange));
+}

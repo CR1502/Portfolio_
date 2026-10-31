@@ -1,0 +1,134 @@
+/* Soffit's five background stops are defined only in lib/soffit-shader.ts.
+   These foreground roles give text, surfaces and project art a matching palette.
+   Type remains root-relative; the exact shader configuration is untouched. */
+
+:root {
+  color-scheme: dark;
+
+  /* --- palette: foreground roles aligned with the exact Soffit background --- */
+  --ink-900: #18141f;
+  --ink-800: #2a2436;
+  --ink-700: #302a3c;
+  --ink-600: #4e4468;
+  --ink-500: #75688e;
+  --text: #f5eeff;
+  --muted: #cfc4df;
+  --cyan: #cfc4e8;
+  --amber: #b5a2da;
+
+  /* Names the rest of the sheet still uses. Kept as aliases so the palette
+     has exactly one source of truth. */
+  --bg: var(--ink-800);
+  --blue: var(--cyan);
+  --orange: var(--amber);
+  --surface: var(--ink-700);
+  --surface-raised: var(--ink-600);
+  --line: var(--ink-500);
+  --on-accent: var(--ink-900);
+
+  /* --- light rig ------------------------------------------------------
+     One key light, fixed. Every material below derives its highlight and
+     shadow from these three values, which is what makes a matte button and a
+     chrome object read as the same world lit the same way. */
+  --light-angle: 135deg; /* travelling toward bottom-right */
+  --light-dx: 1; /* shadow offset sign, x */
+  --light-dy: 1; /* shadow offset sign, y */
+  --light-spread: 18px;
+  --light-tight: 6px;
+  --highlight: rgb(255 255 255 / 0.055);
+  --highlight-strong: rgb(255 255 255 / 0.1);
+
+  /* --- type -----------------------------------------------------------
+     Fluid scale. step--1 is the floor at 13px, comfortably above the 11pt
+     platform minimum, and every step scales with the root so browser and OS
+     text-size settings work. */
+  --step--1: clamp(0.8125rem, 0.785rem + 0.14vw, 0.875rem); /* 13 -> 14 */
+  --step-0: clamp(1rem, 0.966rem + 0.17vw, 1.0625rem); /*  16 -> 17 */
+  --step-1: clamp(1.125rem, 1.057rem + 0.34vw, 1.3125rem); /*  18 -> 21 */
+  --step-2: clamp(1.375rem, 1.26rem + 0.57vw, 1.6875rem); /*  22 -> 27 */
+  --step-3: clamp(1.625rem, 1.42rem + 1.02vw, 2.1875rem); /*  26 -> 35 */
+  --step-4: clamp(2rem, 1.66rem + 1.7vw, 2.9375rem); /*  32 -> 47 */
+  --step-5: clamp(2.375rem, 1.83rem + 2.72vw, 3.875rem); /*  38 -> 62 */
+  --step-6: clamp(2.75rem, 1.7rem + 5.23vw, 5.625rem); /*  44 -> 90 */
+  --step-7: clamp(3rem, 1.3rem + 8.5vw, 7rem); /*  48 -> 112 */
+
+  /* Apple system type: -apple-system (Safari, Firefox) and BlinkMacSystemFont (Chrome)
+     resolve to SF Pro only on Apple devices; everywhere else they don't match and
+     Inter, the closest open counterpart, takes over. One family; hierarchy is weight. */
+  --font-body: -apple-system, BlinkMacSystemFont, var(--font-sans), "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-body);
+  --font-ui: ui-monospace, "SF Mono", SFMono-Regular, Menlo, var(--font-mono), monospace;
+
+  /* Tracking scales inversely with size: display type needs negative tracking,
+     label type needs positive. One flat -0.055em across both was the old bug. */
+  --track-display: -0.03em;
+  --track-head: -0.025em;
+  --track-body: -0.005em;
+  --track-label: 0.1em;
+
+  /* --- space: 8px grid ------------------------------------------------ */
+  --sp-1: 0.5rem; /*  8 */
+  --sp-2: 1rem; /* 16 */
+  --sp-3: 1.5rem; /* 24 */
+  --sp-4: 2rem; /* 32 */
+  --sp-5: 3rem; /* 48 */
+  --sp-6: 4rem; /* 64 */
+  --sp-7: 6rem; /* 96 */
+  --sp-8: 8rem; /* 128 */
+
+  /* Page gutter folds in the safe-area inset so notches and rounded corners
+     never clip content. Content runs edge to edge inside it rather than in a
+     centred column, so the gutter widens with the screen: ~75px at 1440,
+     ~130px at 2560. */
+  --gutter: max(clamp(1.25rem, 0.2rem + 5vw, 10rem), var(--dock-clearance, 0px));
+  --gutter-left: max(var(--gutter), env(safe-area-inset-left));
+  --gutter-right: max(var(--gutter), env(safe-area-inset-right));
+  --page-width: calc(100% - var(--gutter-left) - var(--gutter-right));
+  --measure: 62ch;
+
+  /* --- shape ----------------------------------------------------------- */
+  --r-1: 8px;
+  --r-2: 12px;
+  --r-3: 18px;
+  --r-4: 26px;
+  --r-pill: 999px;
+
+  --nav-h: 64px;
+
+  /* --- hit targets ----------------------------------------------------- */
+  --target-touch: 44px;
+  --target-pointer: 28px;
+  --target: var(
+    --target-touch
+  ); /* assume touch until a fine pointer is proven */
+
+  /* --- motion ----------------------------------------------------------
+     Custom curves. --ease-out-quint is the workhorse; --ease-spring overshoots
+     slightly for squash-and-stretch feedback. */
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
+  --dur-4: 700ms;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* A fine pointer can aim smaller, so relax the floor to the desktop minimum. */
+@media (pointer: fine) {
+  :root {
+    --target: var(--target-pointer);
+  }
+}
+
+:root {
+  --art-light: #e7dff4;
+  --art-mid: #8f7fc0;
+  --art-dark: #332b46;
+  --warm-light: #e7dff4;
+  --warm-dark: #5a4b78;
+  --font-scene: var(--font-body);
+  --scene-title: clamp(3.5rem, 1rem + 8vw, 9.5rem);
+  --scene-italic: clamp(3rem, 1.2rem + 6vw, 7rem);
+}

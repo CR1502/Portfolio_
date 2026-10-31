@@ -1,0 +1,151 @@
+/* Magnetic dock (Nav.tsx). A near-solid bar holding clear glass tiles; each tile's
+   size follows --s, which the spring in Nav.tsx drives from cursor distance.
+   Wide screens: vertical, fixed to the right edge and centred on the viewport. */
+:root {
+  /* Both gutters clear the dock (60px wide, 16px from the edge) so the page stays centred. */
+  --dock-clearance: 88px;
+}
+.dock {
+  --dock-size: 44px;
+  position: fixed;
+  z-index: 30;
+  top: 50%;
+  right: max(1rem, env(safe-area-inset-right));
+  translate: 0 -50%;
+  display: flex;
+  flex-direction: column;
+  /* Tiles grow toward the page, away from the screen edge. */
+  align-items: flex-end;
+  gap: 6px;
+  padding: 7px;
+  border: 1px solid #ffffff1f;
+  border-radius: 20px;
+  background: rgb(18 20 26 / 0.92);
+  box-shadow:
+    inset 0 1px 0 #ffffff14,
+    0 18px 50px #02050b80;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+}
+.dock-item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--dock-size) * var(--s, 1));
+  height: calc(var(--dock-size) * var(--s, 1));
+  border: 1px solid #ffffff1f;
+  border-radius: calc(12px * var(--s, 1));
+  background: linear-gradient(180deg, #ffffff17 0%, #ffffff08 100%);
+  box-shadow: inset 0 1px 0 #ffffff1f;
+  color: #eef2f7;
+  transition: background var(--dur-1) ease;
+}
+.dock-item:hover {
+  background: linear-gradient(180deg, #ffffff24 0%, #ffffff0d 100%);
+}
+.dock-item svg {
+  width: 50%;
+  height: 50%;
+}
+.dock-item:hover,
+.dock-item:focus-visible {
+  color: #fff;
+}
+.dock-item:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+/* Active section: a small lamp on the outer side, as under a running macOS app. */
+.dock-item[aria-current="location"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  translate: 0 -50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e9f4ff;
+}
+.dock-tip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 14px);
+  translate: 0 -50%;
+  padding: 5px 10px;
+  border: 1px solid #ffffff1f;
+  border-radius: 8px;
+  background: rgb(18 20 26 / 0.92);
+  color: #f5f7fa;
+  font-size: var(--step--1);
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-1) ease;
+}
+.dock-item:hover .dock-tip,
+.dock-item:focus-visible .dock-tip {
+  opacity: 1;
+}
+/* Short landscape screens keep all seven tiles inside the viewport. */
+@media (min-width: 50.0625rem) and (max-height: 26rem) {
+  .dock {
+    gap: 2px;
+    padding: 4px;
+  }
+}
+
+/* Phones: a horizontal dock centred along the bottom edge, clear of the home indicator. */
+@media (max-width: 50rem) {
+  :root {
+    --dock-clearance: 0px;
+  }
+  body {
+    padding-bottom: calc(44px + 2.5rem + env(safe-area-inset-bottom));
+  }
+  .dock {
+    top: auto;
+    right: auto;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: 50%;
+    translate: -50% 0;
+    flex-direction: row;
+    gap: 4px;
+    padding: 6px;
+  }
+  .dock-item[aria-current="location"]::after {
+    top: auto;
+    right: auto;
+    bottom: -5px;
+    left: 50%;
+    translate: -50% 0;
+  }
+  .dock-tip {
+    top: auto;
+    right: auto;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    translate: -50% 0;
+  }
+}
+/* Seven 44px tiles still fit the narrowest supported phone (344px). */
+@media (max-width: 24rem) {
+  .dock {
+    gap: 2px;
+    padding: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock-item,
+  .dock-tip {
+    transition: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .dock {
+    background: #12141a;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

@@ -25,3 +25,10 @@ npm-debug.log*
 .claude/
 skills-lock.json
 design_handoff_portfolio_editorial/
+
+# viewport audit output
+.audit/
+
+# local AI tooling, skills, and working notes: never published
+.agents/
+*.md

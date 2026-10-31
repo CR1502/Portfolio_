@@ -1,0 +1,114 @@
+/* Identity and anatomical point cloud share the opening frame. */
+/* The hero scales past the shared type ramp, which tops out near 1650px, so it
+   keeps filling the frame on large displays. */
+.hero.hero-soffit {
+  padding-top: 8rem;
+  --hero-name: clamp(2rem, 1.1rem + 2.7vw, 5rem);
+  --hero-role: clamp(1.25rem, 0.85rem + 0.95vw, 2rem);
+  --hero-title: clamp(3rem, 1rem + 6vw, 10rem);
+  --hero-body: clamp(1.0625rem, 0.75rem + 0.55vw, 1.5rem);
+  --hero-label: clamp(0.875rem, 0.7rem + 0.3vw, 1.125rem);
+}
+.hero-identity { display: flex; flex-direction: column; gap: 0.25em; font-family: var(--font-body); color: var(--text); margin: 0 0 var(--sp-4); }
+.hero-identity strong { font-size: var(--hero-name); line-height: 1.08; font-weight: 700; letter-spacing: -0.025em; }
+.hero-identity > span { font-size: var(--hero-role); line-height: 1.35; font-weight: 600; color: #a1e5f7; }
+.hero-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: var(--sp-4); }
+.hero-main .hero-scene { margin-block: var(--sp-3); container-type: inline-size; }
+/* The widest line is 5.08em in SF Pro Bold, so 18cqi keeps the title inside its column at any size. */
+.hero.hero-soffit .hero-main h1 { font-size: var(--hero-title); font-size: min(var(--hero-title), 18cqi); max-width: none; }
+.hero-soffit .hero-context, .hero-soffit .hero-location { font-size: var(--hero-label); }
+.hero-soffit .cinematic-hero-footer .hero-description { font-size: var(--hero-body); max-width: 44ch; }
+.hero-soffit .hero-actions .button { min-height: clamp(3rem, 2.5rem + 0.8vw, 4rem); padding-inline: clamp(1.375rem, 0.9rem + 1vw, 2.25rem); font-size: var(--hero-body); }
+.point-cloud-brain { position: relative; min-width: 0; width: 100%; height: clamp(24rem, min(16rem + 16vw, 55svh), 54rem); isolation: isolate; pointer-events: none; }
+.point-cloud-brain::before { content: ""; position: absolute; inset: -12% -5%; z-index: -1; border-radius: 50%; background: radial-gradient(ellipse, #15235ec9 0%, #10244566 38%, #070d2600 70%); }
+.point-cloud-brain canvas, .brain-fallback { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.point-cloud-brain canvas { opacity: 0; }
+.point-cloud-brain[data-ready="true"] canvas { opacity: 1; }
+.point-cloud-brain[data-ready="true"] .brain-fallback { display: none; }
+/* Wide editorial project cards, retaining the native sticky sequence. The material
+   is shared with the static posters below the sequence; only the sizing is sticky. */
+/* Cards span the page from the left gutter. The art is 1.6:1, so a card is about a
+   third as tall as it is wide; the svh term keeps it short enough to pin. */
+.sticky-project-step .sticky-project-card {
+  width: min(100%, 300svh - 36rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+.sticky-project-step .sticky-project-card .orbit-art { aspect-ratio: 1.6; }
+.sticky-project-step .sticky-project-card .orbit-copy { padding-inline: clamp(var(--sp-2), 2.5vw, var(--sp-7)); }
+.sticky-project-step .sticky-project-card .orbit-copy h3 { font-size: clamp(1.75rem, 0.9rem + 1.9vw, 4rem); }
+.sticky-project-step .sticky-project-card .orbit-sub { font-size: clamp(1rem, 0.7rem + 0.6vw, 1.5rem); }
+.sticky-project-card {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: 2rem;
+  /* Warm off-white, not white: it lifts the cards off the liquid without the glare of
+     pure white. Swap the palette here; the rules below read it.
+     Smallest text (--card-muted) is 7.03:1 at the lightest stop, 5.98:1 at the deepest. */
+  --card-light: #f7f4ee;
+  --card-mid: #f1ede5;
+  --card-deep: #e8e2d6;
+  --card-ink: #1b2231;
+  --card-muted: #4b5364;
+  background: linear-gradient(155deg, var(--card-light) 0%, var(--card-mid) 55%, var(--card-deep) 100%);
+  color: var(--card-ink);
+  border: 1px solid #ffffffb3;
+  box-shadow: inset 0 1px 0 #ffffffcc, 0 30px 70px #02050b80;
+  --art-light: #d3f7ff;
+  --art-mid: #55b5e9;
+  --art-dark: #124b82;
+  --warm-light: #c2fff4;
+  --warm-dark: #116a82;
+  --cyan: #79dcfa;
+  --amber: #60eacb;
+  --ink-900: #06152c;
+}
+.sticky-project-card .orbit-art { aspect-ratio: 1; align-self: stretch; background: radial-gradient(ellipse at 45% 40%, #12365a, #061428 75%); border-color: #1b22311f; }
+.sticky-project-card .orbit-copy { display: flex; flex-direction: column; justify-content: center; padding: var(--sp-3) var(--sp-2); min-width: 0; }
+.sticky-project-card .orbit-copy h3 { font-size: var(--step-3); color: var(--card-ink); min-height: 0; margin-bottom: var(--sp-3); }
+.sticky-project-card .orbit-sub { font-size: var(--step-0); min-height: 0; color: var(--card-muted); }
+.sticky-project-card .orbit-date, .sticky-project-card .orbit-tags { color: var(--card-muted); }
+.sticky-project-card .orbit-tags { margin-top: var(--sp-4); border-top-color: #1b223122; }
+.sticky-project-card .orbit-read { color: var(--card-ink); margin-top: var(--sp-2); }
+.sticky-project-card .orbit-number { background: #0a223b; border-color: #82dafa55; color: #d3f7ff; }
+.sticky-project-card .orbit-open-icon { background: var(--card-light); color: var(--card-ink); }
+/* Panels nest these as inset surfaces rather than second opaque boxes. */
+.skill-detail-stage { background: #ffffff0a; border-color: #7ec3eb40; }
+.skill-wheel { background: #ffffff06; }
+.brand { background: #101827f2; }
+.contact-form { padding: var(--sp-4); background: #ffffff08; border: 1px solid #7ec3eb33; border-radius: 1.5rem; }
+/* Project notes share the cards' off-white; text and accent tokens follow it. Ink is
+   14.5:1, muted copy 7.0:1, the blue first metric 6.2:1, the ink button 14.5:1. */
+.project-dialog { --project-glass-opacity: 0.95; --text: #1b2231; --muted: #4b5364; --cyan: #1b2231; --orange: #1f5f8b; --on-accent: #f7f4ee; background-color: rgb(247 244 238 / var(--project-glass-opacity)); border-color: #ffffffb3; color: var(--text); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); }
+/* Inner pieces that were drawn as light-on-dark glass. */
+.project-dialog .dialog-top .eyebrow { color: var(--muted); }
+.project-dialog .dialog-close { background: #1b22310d; border-color: #1b223126; }
+.project-dialog .dialog-close:hover { background: #1b22311a; }
+.project-dialog .project-tags span { background: #1b22310f; }
+.project-dialog .button.neu { background: transparent; border: 1px solid #1b223140; box-shadow: none; color: var(--text); }
+/* Notes for the four featured projects get more room; the posters keep the standard width. */
+.project-dialog[data-featured="true"] { width: min(1040px, 100% - 40px); }
+@media (max-width: 62.5rem) {
+  .hero-main { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--sp-2); }
+  .point-cloud-brain { height: 26rem; }
+}
+@media (max-width: 50rem) {
+  .hero-main { grid-template-columns: minmax(0, 1fr); }
+  .point-cloud-brain { height: 24rem; max-width: 34rem; margin-inline: auto; }
+  .hero-soffit .cinematic-hero-footer { margin-top: var(--sp-3); }
+  .sticky-project-step .sticky-project-card { width: min(88vw, 38rem); grid-template-columns: minmax(0, 1fr); padding: var(--sp-2); gap: 0; }
+  .sticky-project-step .sticky-project-card .orbit-art { aspect-ratio: 1.65; }
+  .sticky-project-step .sticky-project-card .orbit-copy { padding: var(--sp-3); }
+  .sticky-project-step .sticky-project-card .orbit-copy h3 { font-size: var(--step-2); margin-bottom: var(--sp-2); }
+  .sticky-project-step .sticky-project-card .orbit-tags { margin-top: var(--sp-2); }
+  .sticky-project-card .orbit-read { margin-top: 0; }
+  .contact-form { padding: var(--sp-3); }
+}
+:root[data-large-type="true"] .hero-main { grid-template-columns: 1fr; }
+:root[data-large-type="true"] .point-cloud-brain { max-width: 30rem; margin-inline: auto; }
+:root[data-large-type="true"] .sticky-project-step .sticky-project-card { grid-template-columns: minmax(0, 1fr); }
+:root[data-large-type="true"] .sticky-project-step .sticky-project-card .orbit-art { aspect-ratio: 1.65; }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .project-dialog { --project-glass-opacity: 1; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .skill-detail-stage, .skill-wheel, .contact-form { background: #101827; }
+}

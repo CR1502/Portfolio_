@@ -1,0 +1,477 @@
+/* Projects are typographic spreads, without illustrated cards or autonomous motion. */
+.project-piece,
+.project-piece.piece-kube,
+.project-piece.piece-aeo,
+.project-piece.is-active {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  animation: none;
+  transition: none;
+  width: min(65vw, 760px);
+}
+.project-piece:hover,
+.project-piece:focus-within {
+  border-color: var(--line);
+  box-shadow: none;
+}
+.project-piece .piece-meta {
+  top: 20px;
+  left: 36px;
+  right: 36px;
+}
+.project-piece .piece-meta span:last-child {
+  color: var(--muted);
+}
+.project-piece .piece-copy {
+  position: absolute;
+  inset: 78px 36px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+}
+.project-piece .piece-copy h3 {
+  font-size: var(--step-5);
+  font-weight: 400;
+  line-height: 1.1;
+  max-width: 650px;
+}
+.project-piece .piece-copy .piece-subtitle {
+  font-size: var(--step-0);
+  color: var(--text);
+  margin-top: 14px;
+}
+.project-piece .piece-copy .piece-overview {
+  font-size: var(--step-0);
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 510px;
+  margin-top: 22px;
+}
+.piece-stack {
+  font:
+    var(--step--1) var(--font-ui),
+    monospace;
+  color: var(--muted);
+  margin-top: 24px;
+}
+.piece-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 26px;
+  font-size: var(--step--1);
+  margin-top: auto;
+  padding-top: 22px;
+}
+.piece-read > span {
+  color: var(--blue);
+}
+.project-piece:hover .piece-read,
+.project-piece:focus-within .piece-read {
+  color: var(--blue);
+}
+.project-piece:has(:focus-visible) {
+  outline: 2px solid var(--blue);
+  outline-offset: -2px;
+}
+.project-dialog {
+  border: 1px solid #69839566;
+  box-shadow: 0 16px 60px #0005;
+}
+.project-dialog[open] {
+  animation: none;
+  transform: none;
+}
+.footer {
+  padding-bottom: 32px;
+}
+@media (max-width: 760px) {
+  .project-piece {
+    width: 88vw;
+  }
+  .project-piece .piece-meta {
+    left: 24px;
+    right: 24px;
+  }
+  .project-piece .piece-copy {
+    inset: 75px 24px 25px;
+  }
+  .project-piece .piece-copy h3 {
+    font-size: var(--step-3);
+  }
+  .project-piece .piece-copy .piece-overview {
+    font-size: var(--step--1);
+    margin-top: 16px;
+  }
+  .piece-stack {
+    font-size: var(--step--1);
+    margin-top: 18px;
+  }
+}
+
+.is-pinned .project-piece {
+  height: clamp(360px, 46svh, 520px);
+}
+@media (max-width: 760px) {
+  .project-piece {
+    height: 500px;
+  }
+}
+
+/* Open composition: grouping comes from space and type, not containers. */
+.section,
+.project-journey,
+.timeline,
+.footer {
+  border: 0;
+}
+.section {
+  padding-block: 110px;
+}
+.section-heading {
+  margin-bottom: 58px;
+}
+.experience-row {
+  border: 0;
+  padding: 34px 0 48px;
+  gap: 60px;
+}
+.experience-row + .experience-row {
+  margin-top: 18px;
+}
+.experience-date {
+  padding-top: 4px;
+}
+.education-grid {
+  grid-template-columns: 1.1fr 1fr;
+  column-gap: 100px;
+  row-gap: 55px;
+  align-items: start;
+}
+.education-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  transform: none;
+}
+.education-card:nth-child(2) {
+  margin-top: 90px;
+}
+.education-card:hover {
+  border: 0;
+}
+.education-card::after {
+  display: none;
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 42px 65px;
+}
+.skill-group {
+  border: 0;
+  padding: 0;
+  flex: 1 1 270px;
+  max-width: 420px;
+}
+.skill-group h3 {
+  color: var(--text);
+}
+.project-piece,
+.project-piece.piece-kube,
+.project-piece.piece-aeo,
+.project-piece.is-active,
+.project-piece:hover,
+.project-piece:focus-within {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.project-track {
+  gap: 36px;
+}
+.project-piece .piece-copy {
+  left: 20px;
+  right: 50px;
+}
+.project-piece .piece-meta {
+  left: 20px;
+  right: 50px;
+}
+.experiment-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px 64px;
+}
+.experiment:nth-child(n) {
+  border: 0;
+  flex: 1 1 280px;
+  max-width: 450px;
+  padding: 14px 32px 14px 0;
+  background: transparent;
+}
+.experiment:hover {
+  background: transparent;
+}
+.experiment:hover .experiment-name {
+  color: var(--blue);
+}
+.connect-section {
+  background: radial-gradient(
+    ellipse at 70% 60%,
+    color-mix(in srgb, var(--blue) 6%, transparent),
+    transparent 70%
+  );
+}
+
+/* A sculptural illustration above a floating title surface. */
+.project-piece,
+.project-piece.piece-kube,
+.project-piece.piece-aeo,
+.project-piece.is-active {
+  display: flex;
+  flex-direction: column;
+  width: min(76vw, 920px);
+  min-width: 0;
+  height: auto;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+  isolation: isolate;
+}
+.project-piece .piece-meta {
+  position: static;
+  padding: var(--sp-2) var(--sp-3) 0;
+  color: var(--muted);
+}
+.project-visual {
+  position: relative;
+  flex: 1 1 12rem;
+  min-height: 9rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  perspective: 1000px;
+}
+.project-visual svg {
+  width: min(100%, 640px);
+  height: 100%;
+  max-height: 17rem;
+  overflow: visible;
+  transform: rotateX(8deg) rotateY(-8deg);
+  transition: transform var(--dur-4) var(--ease-out-quint);
+}
+.project-piece .piece-copy {
+  position: relative;
+  inset: auto;
+  align-self: flex-end;
+  width: 86%;
+  margin: 0 var(--sp-2) var(--sp-2) 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-4);
+  background: linear-gradient(145deg, var(--ink-600), var(--ink-700) 60%);
+  border: 1px solid var(--line);
+  box-shadow:
+    inset 0 1px 0 var(--highlight-strong),
+    calc(var(--light-dx) * 12px) calc(var(--light-dy) * 20px) 42px #03071170;
+  flex: 0 0 auto;
+  transition:
+    transform var(--dur-3) var(--ease-out-quint),
+    border-color var(--dur-3);
+}
+.project-piece .piece-copy h3 {
+  font-size: var(--step-3);
+  max-width: none;
+}
+.project-piece .piece-copy .piece-subtitle {
+  font-size: var(--step-0);
+  margin-top: var(--sp-1);
+  line-height: 1.5;
+}
+.project-piece .piece-stack {
+  margin-top: var(--sp-2);
+  line-height: 1.6;
+  font-size: var(--step--1);
+}
+.project-piece .piece-read {
+  margin-top: var(--sp-2);
+  padding: 0;
+  min-height: var(--target);
+  font-size: var(--step--1);
+}
+.is-pinned .project-piece {
+  height: clamp(430px, 56svh, 600px);
+}
+.is-pinned .project-sticky {
+  padding-top: calc(var(--nav-h) + var(--sp-3));
+  padding-bottom: var(--sp-2);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-piece:hover .piece-copy {
+    transform: translateY(-5px);
+    border-color: var(--muted);
+  }
+  .project-piece:hover .project-visual svg {
+    transform: rotateX(0deg) rotateY(0deg) translateY(-3px);
+  }
+}
+@media (max-width: 62.5rem) {
+  .project-piece,
+  .project-piece.piece-kube,
+  .project-piece.piece-aeo {
+    width: 88vw;
+  }
+  .project-visual {
+    flex: 0 0 auto;
+    height: 14rem;
+  }
+  .project-piece .piece-copy {
+    width: 94%;
+    margin-right: var(--sp-1);
+    padding: var(--sp-3);
+  }
+  .project-piece .piece-meta {
+    padding-inline: var(--sp-3);
+  }
+}
+
+/* A consistent archive collection, without raised rectangular panels. */
+.experiment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+}
+.experiment:nth-child(n) {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-1) var(--sp-3);
+  max-width: none;
+  width: 100%;
+  padding: var(--sp-3);
+  border-radius: var(--r-3);
+  border: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+  background: color-mix(in srgb, var(--ink-700) 60%, transparent);
+  box-shadow: none;
+  text-align: left;
+}
+.experiment .experiment-date {
+  grid-column: 1;
+  font-size: var(--step--1);
+}
+.experiment .experiment-name {
+  grid-column: 1;
+  font-size: var(--step-2);
+  line-height: 1.3;
+}
+.experiment .experiment-sub {
+  grid-column: 1;
+  line-height: 1.6;
+  font-size: var(--step--1);
+  margin: 0;
+}
+.experiment .experiment-arrow {
+  position: static;
+  grid-column: 2;
+  grid-row: 1 / 4;
+  align-self: center;
+  font-size: var(--step-1);
+}
+.experiment:hover {
+  background: var(--ink-700);
+  border-color: var(--muted);
+}
+@media (max-width: 50rem) {
+  .experiment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* A scene replacement on desktop; horizontal native browsing remains on touch. */
+.is-pinned .project-track {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: 12px 0 24px;
+  height: calc(clamp(430px, 56svh, 600px) + 36px);
+  transform: none !important;
+  will-change: auto;
+}
+.is-pinned .project-piece {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: min(920px, calc(100% - 112px));
+  transform: translateX(-50%);
+}
+.is-pinned .project-piece[aria-hidden="true"] {
+  pointer-events: none;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-piece.pointer-over .project-visual svg {
+    transform: perspective(900px) rotateX(calc(8deg + var(--tilt-x, 0deg) * 6))
+      rotateY(calc(-8deg + var(--tilt-y, 0deg) * 7)) scale(1.025);
+    transition: transform 140ms ease-out;
+  }
+}
+.palette-preview {
+  position: fixed;
+  z-index: 25;
+  bottom: max(var(--sp-2), env(safe-area-inset-bottom));
+  left: var(--gutter-left);
+  right: var(--gutter-right);
+  max-width: 50rem;
+  margin: auto;
+  padding: var(--sp-2);
+  border-radius: var(--r-3);
+  border: 1px solid var(--line);
+  background: var(--ink-700);
+  box-shadow: 0 12px 40px #0008;
+  font-size: var(--step--1);
+}
+.palette-preview > span {
+  color: var(--muted);
+  display: block;
+  margin-bottom: var(--sp-1);
+}
+.palette-preview > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+.palette-preview a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+}
+.palette-preview a[aria-current="true"] {
+  background: var(--cyan);
+  color: var(--on-accent);
+}
+
+/* Palette contrast lives in the existing display word; no layout changes. */
+.quote-hero h1 em {
+  color: var(--cyan);
+}
+.is-pinned .project-piece {
+  transition:
+    opacity 280ms var(--ease-out-quint),
+    transform 420ms var(--ease-out-quint),
+    visibility 0s linear 280ms;
+}
+.is-pinned .project-piece[aria-hidden="false"] {
+  transition:
+    opacity 280ms var(--ease-out-quint),
+    transform 420ms var(--ease-out-quint),
+    visibility 0s;
+}

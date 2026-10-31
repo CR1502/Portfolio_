@@ -1,0 +1,41 @@
+/* Componentry WebGL Liquid and Pixel Canvas, adapted from MIT-licensed source. */
+.webgl-liquid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 75% 70%, #134d9366, transparent 62%),
+    linear-gradient(135deg, #04050b, #061425);
+}
+.webgl-liquid canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.webgl-liquid[data-ready="true"] canvas {
+  opacity: 1;
+}
+.pixel-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.motion-cursor {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+  .pixel-canvas {
+    display: none;
+  }
+  .webgl-liquid canvas {
+    display: none;
+  }
+}

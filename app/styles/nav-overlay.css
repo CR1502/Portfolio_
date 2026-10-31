@@ -1,0 +1,18 @@
+.nav-links a::after {
+  content: "↗";
+  color: var(--muted);
+}
+.nav-links a[aria-current="location"]::after {
+  content: "●";
+  color: var(--amber);
+}
+.nav-contact[aria-current="location"] {
+  color: var(--amber);
+}
+.experience-body summary:hover {
+  color: var(--text);
+}
+.experience-body details[open] > summary > span {
+  display: inline-block;
+  transform: rotate(45deg);
+}

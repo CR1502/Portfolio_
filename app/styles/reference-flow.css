@@ -1,0 +1,642 @@
+@font-face {
+  font-family: "Zentry Display";
+  src: url("/assets/zentry/zentry-display.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* The supplied references define this pass: liquid, bold type, expanding media, then reading. */
+body::before,
+body::after {
+  display: none;
+}
+body {
+  background: #04050b;
+}
+.scene-hero {
+  position: relative;
+  min-height: 100svh;
+  isolation: isolate;
+}
+.hero.hero-cinematic {
+  display: block;
+  position: relative;
+  padding-top: clamp(8rem, 15svh, 11rem);
+  padding-bottom: var(--sp-5);
+  min-height: 100svh;
+}
+.hero-kicker {
+  position: relative;
+  z-index: 3;
+}
+.hero-scene {
+  position: relative;
+  margin-block: var(--sp-4);
+  min-height: 27rem;
+}
+.hero-cinematic h1 {
+  font-family: var(--font-scene);
+  font-size: var(--scene-title);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  max-width: 65%;
+  margin: 0;
+  text-shadow: 0 4px 35px #02050b85;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.hero-cinematic h1 em {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--scene-italic);
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  color: var(--text);
+}
+.hero-cinematic h1 > span {
+  display: block;
+}
+.hero-orb {
+  position: absolute;
+  right: -3%;
+  top: -6rem;
+  width: 54%;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-orb video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+.hero-orb > p {
+  text-align: right;
+  margin-top: var(--sp-1);
+  padding-right: var(--sp-4);
+}
+.cinematic-hero-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  position: relative;
+  z-index: 3;
+}
+.cinematic-hero-footer .hero-description {
+  font-size: var(--step-0);
+  max-width: 45ch;
+  line-height: 1.8;
+}
+.cinematic-hero-footer .hero-actions {
+  margin-top: 0;
+}
+.hero-cinematic .hero-location {
+  margin-top: var(--sp-4);
+}
+.about-section {
+  display: block;
+  position: relative;
+  max-width: none;
+  width: 100%;
+  padding: var(--sp-7) 0 0;
+  background: #26115b45;
+  border: 0;
+}
+.about-section .section-heading {
+  width: var(--page-width);
+  margin-inline: auto;
+}
+.about-section h2 {
+  font-family: var(--font-scene);
+  font-size: var(--scene-title);
+  line-height: 0.95;
+  text-transform: uppercase;
+  max-width: 60rem;
+}
+.about-section h2 em {
+  text-transform: none;
+}
+.cinematic-frame {
+  --aperture: 0;
+  position: relative;
+  width: 100%;
+  height: min(70vw, 48rem);
+  min-height: 24rem;
+  background: #04050b;
+  overflow: hidden;
+  clip-path: polygon(
+    calc(15% * (1 - var(--aperture))) calc(10% * (1 - var(--aperture))),
+    calc(100% - 17% * (1 - var(--aperture))) 0,
+    100% calc(100% - 12% * (1 - var(--aperture))),
+    calc(8% * (1 - var(--aperture))) 100%
+  );
+}
+.cinematic-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.frame-caption {
+  position: absolute;
+  bottom: var(--sp-5);
+  left: var(--gutter-left);
+  font-family: var(--font-scene);
+  font-size: var(--step-5);
+  text-transform: uppercase;
+  max-width: 15ch;
+  line-height: 1.05;
+  text-shadow: 0 4px 24px #000;
+}
+.about-section .about-copy {
+  width: var(--page-width);
+  max-width: none;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  padding-block: var(--sp-6);
+  font-size: var(--step-0);
+  background: transparent;
+}
+.about-copy p + p {
+  margin-top: 0;
+}
+.about-copy p:first-child {
+  font-size: var(--step-2);
+  line-height: 1.5;
+  grid-row: span 2;
+}
+.experience-section {
+  background: linear-gradient(180deg, #04050b88, transparent);
+}
+.section-heading h2,
+.connect-section h2 {
+  text-wrap: balance;
+}
+.connect-section {
+  padding-top: var(--sp-8);
+}
+.connect-section h2 {
+  font-family: var(--font-scene);
+  font-size: var(--scene-title);
+  text-transform: uppercase;
+}
+.connect-section h2 em {
+  text-transform: none;
+}
+/* Orbit Card Stack: source transforms are retained; content is Craig's project archive. */
+.orbit-projects {
+  position: relative;
+  padding-top: var(--sp-7);
+  padding-bottom: var(--sp-7);
+  width: 100%;
+  background: linear-gradient(180deg, transparent, #1d135a55 40%, #04050b50);
+}
+.orbit-heading {
+  width: var(--page-width);
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+.orbit-heading h2 {
+  font-family: var(--font-scene);
+  font-size: var(--scene-title);
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+.orbit-heading h2 em {
+  text-transform: none;
+}
+.orbit-stage {
+  position: relative;
+  width: calc(100% - 48px);
+  max-width: 1440px;
+  height: 47rem;
+  margin: 0 auto;
+  isolation: isolate;
+}
+.orbit-card {
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  width: min(78vw, 21rem);
+  transform-origin: bottom;
+  min-height: 0;
+  border-radius: 1.9rem;
+  border: 1px solid #09090b22;
+  background: #e9e6df;
+  color: #141414;
+  padding: var(--sp-2);
+  box-shadow: 10px 25px 55px #02050b60;
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.orbit-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.36;
+  overflow: hidden;
+  background: #071226;
+  border-radius: 1.45rem;
+  border: 1px solid #00000014;
+}
+.orbit-art .project-visual {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  max-height: none;
+  position: absolute;
+  inset: 0;
+}
+.orbit-art .project-visual svg {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  transform: none;
+}
+.orbit-number {
+  position: absolute;
+  bottom: var(--sp-2);
+  right: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  background: #080c15;
+  border: 1px solid #ffffff33;
+  border-radius: 999px;
+  color: #f3f5ff;
+  font-size: var(--step--1);
+  font-family: var(--font-ui);
+}
+.orbit-open-icon {
+  position: absolute;
+  right: var(--sp-2);
+  top: var(--sp-2);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e9e6df;
+  color: #141414;
+  font-size: var(--step-1);
+}
+.orbit-copy {
+  padding: var(--sp-3) var(--sp-1) var(--sp-1);
+}
+.orbit-date {
+  font-size: var(--step--1);
+  color: #55535b;
+  font-family: var(--font-ui);
+}
+.orbit-copy h3 {
+  font-family: var(--font-body);
+  font-size: var(--step-2);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-top: var(--sp-1);
+  color: #141414;
+  min-height: 2.3em;
+}
+.orbit-sub {
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #3d3d45;
+  margin-top: var(--sp-1);
+  min-height: 3em;
+}
+.orbit-tags {
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: #55535b;
+  border-top: 1px solid #0002;
+  padding-top: var(--sp-2);
+  margin-top: var(--sp-2);
+  min-height: 3.5em;
+}
+.orbit-read {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  font-size: var(--step--1);
+  font-weight: 600;
+  padding-top: var(--sp-2);
+}
+.orbit-card .orbit-card-open {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  opacity: 1;
+  z-index: 3;
+  cursor: pointer;
+}
+.orbit-card .orbit-card-open:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 6px;
+}
+.orbit-pagination {
+  width: min(64rem, 100% - var(--gutter-left) - var(--gutter-right));
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  position: relative;
+  z-index: 2;
+}
+.orbit-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  width: 100%;
+}
+.orbit-arrows > button,
+.orbit-index button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: var(--step--1);
+  background: var(--ink-800);
+}
+.orbit-arrows p {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  text-align: center;
+  max-width: 22rem;
+  min-width: 0;
+  font-size: var(--step-1);
+}
+.orbit-arrows p > span {
+  font-size: var(--step--1);
+  font-family: var(--font-ui);
+  color: var(--muted);
+}
+.orbit-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-1);
+}
+.orbit-index button[aria-pressed="true"] {
+  background: var(--cyan);
+  color: var(--ink-900);
+  border-color: var(--cyan);
+}
+.orbit-notes {
+  border: 1px solid var(--line);
+  background: var(--ink-700);
+}
+@media (max-width: 68.75rem) {
+  .orbit-stage {
+    height: 41rem;
+  }
+  .orbit-card {
+    top: 44%;
+  }
+  .hero-cinematic h1 {
+    max-width: 75%;
+  }
+  .hero-orb {
+    top: -2rem;
+    right: -4%;
+  }
+  .hero-scene {
+    min-height: 23rem;
+  }
+}
+@media (max-width: 50rem) {
+  .hero.hero-cinematic {
+    padding-top: 8rem;
+    min-height: auto;
+  }
+  .hero-scene {
+    display: flex;
+    flex-direction: column;
+    margin-block: var(--sp-3);
+  }
+  .hero-cinematic h1 {
+    max-width: 100%;
+    font-size: var(--scene-title);
+  }
+  .hero-orb {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    right: auto;
+    top: auto;
+    align-self: center;
+    margin-top: -2rem;
+  }
+  .hero-orb > p {
+    text-align: center;
+    padding: 0;
+    margin-top: -2rem;
+  }
+  .cinematic-hero-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+  .hero-cinematic .hero-location {
+    margin-top: var(--sp-3);
+  }
+  .about-section {
+    padding-top: var(--sp-6);
+  }
+  .about-section h2,
+  .orbit-heading h2 {
+    font-size: var(--step-6);
+  }
+  .about-section .about-copy {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+    padding-block: var(--sp-5);
+  }
+  .about-copy p:first-child {
+    grid-row: auto;
+  }
+  .cinematic-frame {
+    height: 70svh;
+    min-height: 24rem;
+  }
+  .frame-caption {
+    bottom: var(--sp-4);
+    font-size: var(--step-4);
+  }
+  .orbit-heading {
+    align-items: flex-start;
+  }
+  .orbit-stage {
+    width: 100%;
+    height: 41rem;
+  }
+  .orbit-card {
+    top: 47%;
+  }
+  .orbit-projects {
+    padding-block: var(--sp-6);
+  }
+  .connect-section {
+    padding-top: var(--sp-6);
+  }
+}
+:root[data-large-type="true"] .hero-cinematic h1 {
+  font-size: var(--step-5);
+  max-width: 100%;
+}
+:root[data-large-type="true"] .hero-cinematic h1 em {
+  font-size: var(--step-5);
+}
+:root[data-large-type="true"] .hero-orb {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  right: auto;
+  top: auto;
+  margin: auto;
+}
+:root[data-large-type="true"] .orbit-stage {
+  height: 64rem;
+}
+:root[data-large-type="true"] .orbit-card {
+  top: 47%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-frame {
+    clip-path: none;
+  }
+  .orbit-card {
+    transition: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .orbit-card {
+    border: 2px solid #111;
+    box-shadow: none;
+  }
+  .orbit-art {
+    border: 1px solid #ddd;
+  }
+}
+
+.hero-cinematic h1,
+.about-section h2,
+.orbit-heading h2,
+.connect-section h2 {
+  letter-spacing: 0;
+}
+.hero-cinematic h1 > span {
+  font-size: 0.82em;
+  line-height: 1.05;
+}
+.hero-orb {
+  width: 49%;
+  top: -3rem;
+}
+.hero-orb > p {
+  position: absolute;
+  top: var(--sp-2);
+  right: 0;
+  width: 100%;
+  margin: 0;
+}
+@media (max-width: 50rem) {
+  .hero-orb {
+    width: 100%;
+    top: auto;
+  }
+  .hero-orb > p {
+    position: static;
+    margin-top: -2rem;
+  }
+}
+/* Glass remains local and 20%-filled; local luminance control keeps notes readable over pale cards. */
+.project-dialog {
+  backdrop-filter: blur(12px) saturate(1.35) brightness(0.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.35) brightness(0.4);
+}
+.project-dialog .dialog-description,
+.project-dialog .dialog-subtitle,
+.project-dialog .benchmark-note,
+.project-dialog .repo-note,
+.project-dialog .metrics span,
+.project-dialog .project-tags span {
+  color: var(--text);
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .project-dialog {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+.orbit-copy h3,
+.orbit-sub,
+.orbit-tags {
+  overflow-wrap: anywhere;
+}
+/* Composite the supplied orb into the liquid rather than showing its encoded black canvas. */
+.scene-hero {
+  isolation: auto;
+}
+.hero-orb {
+  mix-blend-mode: screen;
+}
+.hero-orb video {
+  mask-image: radial-gradient(circle closest-side, #000 78%, transparent 98%);
+  -webkit-mask-image: radial-gradient(
+    circle closest-side,
+    #000 78%,
+    transparent 98%
+  );
+}
+.scene-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #04050b10 40%,
+    #04050b8c 74%,
+    #04050be6 100%
+  );
+}
+.hero.hero-cinematic {
+  z-index: 1;
+}
+
+@supports (content-visibility: auto) {
+  .orbit-stage {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 47rem;
+  }
+}
+
+@media (hover: none), (max-width: 68.75rem), (prefers-reduced-motion: reduce) {
+  .orbit-hover-hint {
+    display: none;
+  }
+}
+:root[data-large-type="true"] .orbit-hover-hint {
+  display: none;
+}
