@@ -1,10 +1,3 @@
-@font-face {
-  font-family: "Zentry Display";
-  src: url("/assets/zentry/zentry-display.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 /* The supplied references define this pass: liquid, bold type, expanding media, then reading. */
 body::before,
 body::after {
