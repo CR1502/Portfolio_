@@ -34,6 +34,21 @@ export interface EducationItem {
 
 export const projects: Project[] = [
   {
+    num: "lensrag",
+    name: "LensRAG",
+    sub: "Text finds images. Images find text.",
+    date: "Oct – Nov 2026",
+    desc: "Engineered a multimodal retrieval system indexing 2,000 images and 9,900 captions using CLIP embeddings and a persistent ChromaDB store, enabling text-to-image and image-to-text search. Evaluated retrieval across 100 held-out queries on a fixed Flickr8k subset, achieving 40% recall@1, 64% recall@5, and 76% recall@10. Diagnosed retrieval limitations through visual analysis of 12 failure cases, identifying action, context, and spatial-relationship confusion while distinguishing plausible alternate matches from genuine semantic errors.",
+    tags: ["Python", "CLIP", "ChromaDB", "PyTorch"],
+    gh: "https://github.com/CR1502/LensRAG",
+    metrics: [
+      { value: "40%", label: "Recall@1" },
+      { value: "64%", label: "Recall@5" },
+      { value: "76%", label: "Recall@10" },
+    ],
+    note: "Fixed Flickr8k subset · 2,000 images and 9,900 captions indexed. Recall measured over 100 held-out queries; 12 failure cases analyzed for action, context, and spatial-relationship confusion.",
+  },
+  {
     num: "agentforge",
     name: "AgentForge",
     sub: "Multi-agent routing that doesn’t drop the thread.",
@@ -211,6 +226,7 @@ export const skills: SkillGroup[] = [
     items: [
       "CNNs",
       "Vision Transformers",
+      "CLIP",
       "Sequence Models",
       "Generative Models",
       "LLMs",
@@ -225,6 +241,7 @@ export const skills: SkillGroup[] = [
     items: [
       "Prompting",
       "RAG",
+      "Multimodal Retrieval",
       "AI Agents",
       "Multi-Agent Orchestration",
       "Memory Design",
