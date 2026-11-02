@@ -34,6 +34,21 @@ export interface EducationItem {
 
 export const projects: Project[] = [
   {
+    num: "agentforge",
+    name: "AgentForge",
+    sub: "Multi-agent routing that doesn’t drop the thread.",
+    date: "Oct – Nov 2026",
+    desc: "A stateful multi-agent LLM workflow in LangGraph with an LLM classifier router, three specialist agents, and conditional routing. A SqliteSaver checkpointer persists cross-turn memory across process restarts, while real tool-calling (calculator, unit converter) runs through a ToolNode loop and a RAG step retrieves from a persistent Chroma vector store with local embeddings. Runs fully locally on Ollama with zero API keys and pinned dependencies — one command regenerates every reported metric from live model runs.",
+    tags: ["LangGraph", "LangChain", "Chroma", "RAG", "Ollama", "Multi-Agent"],
+    gh: "https://github.com/CR1502/AgentForge",
+    metrics: [
+      { value: "22/22", label: "Routing accuracy" },
+      { value: "21/22", label: "Task completion" },
+      { value: "0", label: "API keys required" },
+    ],
+    note: "Controlled routing/correctness test harness — a 22-case held-out set with known expected routes and tool calls, run on a single local model. 100% routing and tool-call accuracy; one genuine retrieval-recall miss reported rather than masked.",
+  },
+  {
     num: "spectra",
     name: "SpectraDrift",
     sub: "Detecting the shift before it matters.",
@@ -213,6 +228,9 @@ export const skills: SkillGroup[] = [
       "AI Agents",
       "Multi-Agent Orchestration",
       "Memory Design",
+      "LangGraph",
+      "LangChain",
+      "ChromaDB",
     ],
   },
   {
@@ -222,6 +240,7 @@ export const skills: SkillGroup[] = [
       "Databricks",
       "Kubernetes",
       "vLLM",
+      "Ollama",
       "FastAPI",
       "Docker",
       "Jenkins",
