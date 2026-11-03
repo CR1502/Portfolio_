@@ -1,4 +1,5 @@
 const labels: Record<string, string> = {
+  lensrag: "Images and text linked through a shared embedding space",
   "04": "Hand gestures becoming musical notes",
   "05": "Evidence checked through a text classifier",
   "06": "A model reading a chest radiograph",
@@ -40,7 +41,109 @@ export default function ProjectVisual({ project }: { project: string }) {
           </radialGradient>
         </defs>
         <ellipse cx="320" cy="160" rx="270" ry="120" fill={`url(#${glow})`} />
-        {project === "spectra" ? (
+        {project === "lensrag" ? (
+          <g>
+            {[44, 112, 180].map((y) => (
+              <g key={`link-${y}`}>
+                <path
+                  d={`M190 ${y + 28}L300 140`}
+                  stroke="var(--cyan)"
+                  strokeOpacity=".3"
+                />
+                <path
+                  d={`M340 140L450 ${y + 28}`}
+                  stroke="var(--amber)"
+                  strokeOpacity=".3"
+                />
+              </g>
+            ))}
+            {[44, 112, 180].map((y) => (
+              <g key={`img-${y}`} transform={`translate(90 ${y})`}>
+                <rect
+                  width="100"
+                  height="56"
+                  rx="12"
+                  fill={`url(#${metal})`}
+                  stroke="var(--cyan)"
+                  strokeOpacity=".4"
+                />
+                <circle cx="74" cy="17" r="7" fill="var(--amber)" />
+                <path
+                  d="M12 47 38 23 55 39 72 21 90 47Z"
+                  fill={`url(#${warm})`}
+                  stroke="var(--art-light)"
+                  strokeOpacity=".4"
+                />
+              </g>
+            ))}
+            {[44, 112, 180].map((y) => (
+              <g key={`txt-${y}`} transform={`translate(450 ${y})`}>
+                <rect
+                  width="100"
+                  height="56"
+                  rx="12"
+                  fill={`url(#${warm})`}
+                  stroke="var(--warm-light)"
+                  strokeOpacity=".55"
+                />
+                <path
+                  d="M16 18h66M16 30h52M16 42h40"
+                  stroke="var(--ink-900)"
+                  strokeOpacity=".7"
+                  strokeWidth="3"
+                />
+              </g>
+            ))}
+            <circle
+              cx="320"
+              cy="140"
+              r="44"
+              fill={`url(#${metal})`}
+              stroke="var(--art-light)"
+              strokeOpacity=".55"
+            />
+            <ellipse
+              cx="320"
+              cy="140"
+              rx="44"
+              ry="18"
+              stroke="var(--cyan)"
+              strokeOpacity=".25"
+            />
+            {[
+              [306, 130],
+              [332, 124],
+              [318, 142],
+              [336, 151],
+              [303, 150],
+              [324, 160],
+            ].map(([x, y], i) => (
+              <circle
+                key={i}
+                cx={x}
+                cy={y}
+                r={i % 2 ? 3 : 2.4}
+                fill={i % 2 ? "var(--amber)" : "var(--cyan)"}
+              />
+            ))}
+            <path
+              d="M196 48Q320 4 444 48"
+              stroke="var(--amber)"
+              strokeOpacity=".8"
+              strokeWidth="2"
+            />
+            <path
+              d="M196 48l10-2m-10 2 2 10"
+              stroke="var(--amber)"
+              strokeWidth="2"
+            />
+            <path
+              d="M444 48l-10-2m10 2-2 10"
+              stroke="var(--amber)"
+              strokeWidth="2"
+            />
+          </g>
+        ) : project === "spectra" ? (
           <g>
             {Array.from({ length: 17 }, (_, i) => {
               const shift = i > 10 ? 65 : 0,
