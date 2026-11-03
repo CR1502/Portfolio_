@@ -151,7 +151,7 @@ body::before {
     opacity: 0.55;
   }
 }
-@media (prefers-reduced-motion: reduce), (max-height: 620px) {
+@media (max-height: 620px) {
   .intro-journey {
     height: auto;
   }
@@ -166,6 +166,20 @@ body::before {
   .hero.quote-hero {
     min-height: 730px;
   }
+}
+:root[data-motion="reduce"] .intro-journey {
+  height: auto;
+}
+:root[data-motion="reduce"] .intro-sticky {
+  position: relative;
+  height: auto;
+}
+:root[data-motion="reduce"] .intro-copy {
+  opacity: 1 !important;
+  transform: none !important;
+}
+:root[data-motion="reduce"] .hero.quote-hero {
+  min-height: 730px;
 }
 @media (prefers-contrast: more) {
   .spatial-background {

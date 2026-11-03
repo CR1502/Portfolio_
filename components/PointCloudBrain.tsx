@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef } from "react";
 
@@ -192,7 +193,7 @@ export default function PointCloudBrain() {
     // Premultiplied output with additive blending: overlapping points glow instead of washing out.
     const gl = surface.getContext("webgl", { alpha: true, antialias: false, premultipliedAlpha: true, powerPreference: "low-power" });
     if (!gl) return;
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const preference = reducedMotion();
     let reduced = preference.matches, visible = false, lost = false;
     let frame = 0, previous = 0, clock = 0;
     let program: WebGLProgram | null = null;

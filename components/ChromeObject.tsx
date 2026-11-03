@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef } from "react";
 import { detectQuality } from "@/lib/quality";
@@ -32,7 +33,7 @@ export default function ChromeObject() {
     let idle = 0;
     const events = ["pointermove", "pointerdown", "wheel", "keydown"] as const;
     const activate = () => {
-      if (activated || matchMedia("(prefers-reduced-motion: reduce)").matches)
+      if (activated || reducedMotion().matches)
         return;
       activated = true;
       events.forEach((event) => window.removeEventListener(event, activate));
@@ -146,7 +147,7 @@ export default function ChromeObject() {
             let inView = false;
             let visible = false;
             let lost = false;
-            const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+            const reduced = reducedMotion();
 
             const render = (time: number) => {
               frame = 0;

@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 import { useEffect, useRef } from "react";
 export default function AmbientVideo({
   src,
@@ -13,7 +14,7 @@ export default function AmbientVideo({
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     let visible = false;
     const sync = () => {
       if (visible && !document.hidden && !reduced.matches)

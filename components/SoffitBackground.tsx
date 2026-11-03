@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef } from "react";
 import {
@@ -36,11 +37,11 @@ export default function SoffitBackground() {
     // The wrapper's real CSS gradient remains visible if WebGL2 is unavailable.
     if (!gl) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     // Keep media-query evaluation out of the render loop. Reading .matches
     // during a pending style update can consume Chromium's change notification;
     // the change event is the source of truth after this initial snapshot.
-    let reducedMotion = reduced.matches;
+    let reduceMotion = reduced.matches;
     let resources: Resources | null = null;
     let frame = 0;
     let resizeFrame = 0;
@@ -165,7 +166,7 @@ export default function SoffitBackground() {
         !disposed &&
         visible &&
         !document.hidden &&
-        !reducedMotion
+        !reduceMotion
       ) {
         prevT = performance.now();
         frame = requestAnimationFrame(render);
@@ -180,7 +181,7 @@ export default function SoffitBackground() {
         disposed ||
         !visible ||
         document.hidden ||
-        reducedMotion
+        reduceMotion
       )
         return;
       const raw = now - prevT;
@@ -199,7 +200,7 @@ export default function SoffitBackground() {
     }
 
     function aim(event: PointerEvent) {
-      if (reducedMotion) return;
+      if (reduceMotion) return;
       const aspect = window.innerWidth / Math.max(window.innerHeight, 1);
       mouse.tx = (event.clientX / window.innerWidth - 0.5) * aspect;
       mouse.ty = 0.5 - event.clientY / window.innerHeight;
@@ -219,9 +220,9 @@ export default function SoffitBackground() {
     }
 
     function preference(event: MediaQueryListEvent) {
-      reducedMotion = event.matches;
+      reduceMotion = event.matches;
       stop();
-      if (reducedMotion) {
+      if (reduceMotion) {
         // Use the exact shader's initial frame, rather than a different palette.
         clock = 0;
         Object.assign(mouse, { x: 0, y: 0, ax: 0, ay: 0, tx: 0, ty: 0 });

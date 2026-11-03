@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 /** Wheel geometry and inertia adapted from Componentry Wheel Carousel.
  * MIT © 2026 Harsh Jadhav. Full notice: /vendor/componentry-LICENSE.txt */
@@ -57,7 +58,7 @@ export default function Skills() {
   useEffect(() => {
     const host = wheel.current;
     if (!host) return;
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const preference = reducedMotion();
     reduced.current = preference.matches;
     const motion = (event: MediaQueryListEvent) => {
       reduced.current = event.matches;

@@ -1,4 +1,6 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
+import MotionToggle from "./MotionToggle";
 /** A macOS-style magnetic dock, after the Componentry Magnetic Dock pattern: icons
  *  swell toward the cursor on a spring and settle back when it leaves. Vertical on
  *  the right edge on wide screens, along the bottom on phones. Icon paths: Lucide (ISC). */
@@ -106,7 +108,7 @@ export default function Nav() {
     const host = dock.current;
     if (!host) return;
     const tiles = Array.from(host.querySelectorAll<HTMLElement>(".dock-item"));
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     const scale = tiles.map(() => 1), velocity = tiles.map(() => 0);
     let target = tiles.map(() => 1), pointer: number | null = null, frame = 0;
     const vertical = () => getComputedStyle(host).flexDirection === "column";
@@ -162,6 +164,7 @@ export default function Nav() {
           <a className="brand" href="#home" aria-label="cr. — Craig Roberts, home">
             cr<span>.</span>
           </a>
+          <MotionToggle />
         </div>
       </header>
       <nav className="dock" aria-label="Main navigation" ref={dock}>

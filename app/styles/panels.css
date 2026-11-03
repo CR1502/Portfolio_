@@ -140,8 +140,8 @@
 .project-poster .orbit-read {
   margin-top: var(--sp-1);
 }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .project-poster:hover {
+@media (hover: hover) {
+  :root[data-motion="full"] .project-poster:hover {
     translate: 0 -4px;
   }
 }

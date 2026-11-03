@@ -136,11 +136,9 @@
     padding: 4px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .dock-item,
-  .dock-tip {
-    transition: none;
-  }
+:root[data-motion="reduce"] .dock-item,
+:root[data-motion="reduce"] .dock-tip {
+  transition: none;
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .dock {

@@ -1,11 +1,12 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 import { useEffect } from "react";
 /** Native scrolling drives the image aperture, rather than delaying page navigation. */
 export default function SceneFlow() {
   useEffect(() => {
     const frame = document.querySelector<HTMLElement>(".cinematic-frame");
     if (!frame) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     let raf = 0;
     const draw = () => {
       raf = 0;

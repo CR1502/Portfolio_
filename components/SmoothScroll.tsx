@@ -1,11 +1,12 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect } from "react";
 import { cameraPose, publishSceneMotion } from "@/lib/scene-motion";
 
 export default function SmoothScroll() {
   useEffect(() => {
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     const compact = matchMedia("(max-width: 1000px), (max-height: 800px)");
     let dispose = () => {};
     let generation = 0;

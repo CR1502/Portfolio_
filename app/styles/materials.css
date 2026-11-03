@@ -162,14 +162,12 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .inflate:hover,
-  .inflate:active,
-  .inflate[data-pressed],
-  .neu:active,
-  .neu[data-pressed] {
-    transform: none;
-  }
+:root[data-motion="reduce"] .inflate:hover,
+:root[data-motion="reduce"] .inflate:active,
+:root[data-motion="reduce"] .inflate[data-pressed],
+:root[data-motion="reduce"] .neu:active,
+:root[data-motion="reduce"] .neu[data-pressed] {
+  transform: none;
 }
 
 /* Chrome text needs a painted fallback wherever background-clip:text is not

@@ -520,13 +520,11 @@ body {
 :root[data-large-type="true"] .orbit-card {
   top: 47%;
 }
-@media (prefers-reduced-motion: reduce) {
-  .cinematic-frame {
-    clip-path: none;
-  }
-  .orbit-card {
-    transition: none;
-  }
+:root[data-motion="reduce"] .cinematic-frame {
+  clip-path: none;
+}
+:root[data-motion="reduce"] .orbit-card {
+  transition: none;
 }
 @media (prefers-contrast: more) {
   .orbit-card {
@@ -632,10 +630,13 @@ body {
   }
 }
 
-@media (hover: none), (max-width: 68.75rem), (prefers-reduced-motion: reduce) {
+@media (hover: none), (max-width: 68.75rem) {
   .orbit-hover-hint {
     display: none;
   }
+}
+:root[data-motion="reduce"] .orbit-hover-hint {
+  display: none;
 }
 :root[data-large-type="true"] .orbit-hover-hint {
   display: none;

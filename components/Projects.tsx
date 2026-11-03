@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 /** Sticky scroll layout adapted from Componentry Sticky Scroll Cards.
  * Card material adapted from Componentry Orbit Card Stack.
  * MIT © 2026 Harsh Jadhav. License: /vendor/componentry-LICENSE.txt */
@@ -70,7 +71,7 @@ export default function Projects() {
   useEffect(() => {
     const host = stage.current;
     if (!host) return;
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const preference = reducedMotion();
     let frame = 0;
     let reduced = preference.matches;
     const update = () => {

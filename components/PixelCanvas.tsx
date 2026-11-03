@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 /** Adapted from Componentry Pixel Canvas. MIT © 2026 Harsh Jadhav.
  * Source: https://componentry.dev/r/pixel-canvas.json
  * License: /vendor/componentry-LICENSE.txt */
@@ -18,7 +19,7 @@ export function PixelCanvas({
   useEffect(() => {
     const surface = canvas.current;
     if (!surface) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)"),
+    const reduced = reducedMotion(),
       contrast = matchMedia("(prefers-contrast: more)");
     let dispose = () => {};
     const setup = () => {

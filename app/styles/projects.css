@@ -498,20 +498,18 @@
     margin-left: 0;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .project-dialog[open] {
-    animation: none;
-  }
-  .project-track {
-    transform: none !important;
-  }
-  .project-journey {
-    height: auto !important;
-  }
-  .project-sticky {
-    position: relative !important;
-    height: auto !important;
-  }
+:root[data-motion="reduce"] .project-dialog[open] {
+  animation: none;
+}
+:root[data-motion="reduce"] .project-track {
+  transform: none !important;
+}
+:root[data-motion="reduce"] .project-journey {
+  height: auto !important;
+}
+:root[data-motion="reduce"] .project-sticky {
+  position: relative !important;
+  height: auto !important;
 }
 
 .is-pinned .gallery-heading h2 {

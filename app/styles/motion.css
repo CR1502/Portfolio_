@@ -53,8 +53,8 @@
   pointer-events: none;
 }
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .education-card {
+@media (hover: hover) and (pointer: fine) {
+  :root[data-motion="full"] .education-card {
     position: relative;
     isolation: isolate;
     transform: perspective(1200px) rotateX(var(--tilt-x, 0deg))
@@ -65,7 +65,7 @@
       translate 650ms cubic-bezier(0.16, 1, 0.3, 1),
       border-color 200ms ease;
   }
-  .education-card::after {
+  :root[data-motion="full"] .education-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -80,20 +80,20 @@
     opacity: 0;
     transition: opacity 350ms ease;
   }
-  .pointer-over::after {
+  :root[data-motion="full"] .pointer-over::after {
     opacity: 1;
   }
 
-  .button > span,
-  .nav-contact > span {
+  :root[data-motion="full"] .button > span,
+  :root[data-motion="full"] .nav-contact > span {
     display: inline-block;
     transition: transform 200ms ease;
   }
-  .button:hover > span,
-  .nav-contact:hover > span {
+  :root[data-motion="full"] .button:hover > span,
+  :root[data-motion="full"] .nav-contact:hover > span {
     transform: translate(2px, -2px);
   }
-  .primary:hover {
+  :root[data-motion="full"] .primary:hover {
     box-shadow: 0 4px 30px color-mix(in srgb, var(--blue) 21%, transparent);
   }
 }
@@ -104,19 +104,17 @@
     display: none;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .cursor-indicator,
-  .scroll-progress {
-    display: none;
-  }
-  .reveal-pending,
-  .reveal-pending a,
-  .reveal-pending button,
-  .reveal-pending summary {
-    opacity: 1;
-    translate: none;
-    pointer-events: auto;
-  }
+:root[data-motion="reduce"] .cursor-indicator,
+:root[data-motion="reduce"] .scroll-progress {
+  display: none;
+}
+:root[data-motion="reduce"] .reveal-pending,
+:root[data-motion="reduce"] .reveal-pending a,
+:root[data-motion="reduce"] .reveal-pending button,
+:root[data-motion="reduce"] .reveal-pending summary {
+  opacity: 1;
+  translate: none;
+  pointer-events: auto;
 }
 
 @media (prefers-contrast: more), print {

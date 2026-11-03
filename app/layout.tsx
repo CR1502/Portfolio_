@@ -56,6 +56,16 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${plexMono.variable}`}
     >
+      <head>
+        {/* Decide motion before first paint so CSS and scenes agree and nothing
+            flashes. Mirrors lib/motion.ts: an explicit override wins, else the
+            OS setting. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var o=localStorage.getItem('motion-override');var r=o==='off'||(o!=='on'&&matchMedia('(prefers-reduced-motion: reduce)').matches);document.documentElement.dataset.motion=r?'reduce':'full';}catch(e){try{document.documentElement.dataset.motion=matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'full';}catch(_){document.documentElement.dataset.motion='full';}}})();`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

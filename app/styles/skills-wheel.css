@@ -67,7 +67,7 @@
 :root[data-large-type="true"] .skill-wheel { height: auto; padding: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-2); }
 :root[data-large-type="true"] .wheel-option { position: static; transform: none !important; white-space: normal; opacity: 1 !important; }
 :root[data-large-type="true"] .wheel-marker { display: none; }
-@media (prefers-reduced-motion: reduce) { .skill-detail { transition: none; } }
+:root[data-motion="reduce"] .skill-detail { transition: none; }
 /* The supplied liquid runs on its own blue-black base. */
 body { background: #02040b; }
 .webgl-liquid { background: #02040b; }
