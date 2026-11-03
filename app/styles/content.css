@@ -466,8 +466,8 @@ details[open] > summary {
   overflow-wrap: anywhere;
   color: var(--text);
 }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .tool-orb:hover {
+@media (hover: hover) {
+  :root[data-motion="full"] .tool-orb:hover {
     transform: translateY(-5px);
   }
 }

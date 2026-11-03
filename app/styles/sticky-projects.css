@@ -47,11 +47,14 @@
 }
 /* A card must fit before it can pin. Short viewports and enlarged text use
    the same content as a normal list, so no copy or control is trapped. */
-@media (max-height: 699px), (prefers-reduced-motion: reduce) {
+@media (max-height: 699px) {
   .sticky-project-stack { padding-bottom: var(--sp-6); }
   .sticky-project-step { position: relative; min-height: 0; padding-block: var(--sp-4); }
   .sticky-project-step .sticky-project-card { transform: none; }
 }
+:root[data-motion="reduce"] .sticky-project-stack { padding-bottom: var(--sp-6); }
+:root[data-motion="reduce"] .sticky-project-step { position: relative; min-height: 0; padding-block: var(--sp-4); }
+:root[data-motion="reduce"] .sticky-project-step .sticky-project-card { transform: none; }
 :root[data-large-type="true"] .sticky-project-stack { padding-bottom: var(--sp-6); }
 :root[data-large-type="true"] .sticky-project-step { position: relative; min-height: 0; padding-block: var(--sp-4); }
 :root[data-large-type="true"] .sticky-project-step .sticky-project-card { transform: none; }

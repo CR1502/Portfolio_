@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef } from "react";
 import { detectQuality } from "@/lib/quality";
@@ -125,7 +126,7 @@ export default function SpatialBackground() {
       let frame = 0,
         lost = false,
         visible = !document.hidden;
-      const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+      const reduced = reducedMotion();
       const render = () => {
         frame = 0;
         if (lost || !visible) return;
@@ -220,7 +221,7 @@ export default function SpatialBackground() {
     let activated = false;
     const events = ["pointermove", "pointerdown", "wheel", "keydown"] as const;
     const activate = () => {
-      if (activated || matchMedia("(prefers-reduced-motion: reduce)").matches)
+      if (activated || reducedMotion().matches)
         return;
       activated = true;
       events.forEach((event) => window.removeEventListener(event, activate));

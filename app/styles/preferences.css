@@ -1,17 +1,15 @@
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-*::before,
-*::after {
-    animation: none !important;
-    transition: none !important;
-  }
-  .button:hover,
-.button:active {
-    transform: none;
-  }
+:root[data-motion="reduce"] {
+  scroll-behavior: auto;
+}
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+:root[data-motion="reduce"] .button:hover,
+:root[data-motion="reduce"] .button:active {
+  transform: none;
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass {

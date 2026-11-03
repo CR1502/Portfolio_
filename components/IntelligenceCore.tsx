@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 import { useEffect, useRef } from "react";
 type Point = [number, number, number];
 const hash = (n: number) => {
@@ -58,7 +59,7 @@ export default function IntelligenceCore() {
   useEffect(() => {
     const mount = host.current;
     if (!mount) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     let frame = 0;
     const move = (event: PointerEvent) => {
       if (event.pointerType === "touch" || reduced.matches) return;

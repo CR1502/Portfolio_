@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef } from "react";
 
@@ -26,7 +27,7 @@ export default function MotionEffects() {
   }, []);
 
   useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const preference = reducedMotion();
     let dispose = () => {};
 
     const setup = () => {

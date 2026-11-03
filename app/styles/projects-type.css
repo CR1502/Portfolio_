@@ -314,12 +314,12 @@
   padding-top: calc(var(--nav-h) + var(--sp-3));
   padding-bottom: var(--sp-2);
 }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .project-piece:hover .piece-copy {
+@media (hover: hover) {
+  :root[data-motion="full"] .project-piece:hover .piece-copy {
     transform: translateY(-5px);
     border-color: var(--muted);
   }
-  .project-piece:hover .project-visual svg {
+  :root[data-motion="full"] .project-piece:hover .project-visual svg {
     transform: rotateX(0deg) rotateY(0deg) translateY(-3px);
   }
 }
@@ -413,8 +413,8 @@
 .is-pinned .project-piece[aria-hidden="true"] {
   pointer-events: none;
 }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .project-piece.pointer-over .project-visual svg {
+@media (hover: hover) {
+  :root[data-motion="full"] .project-piece.pointer-over .project-visual svg {
     transform: perspective(900px) rotateX(calc(8deg + var(--tilt-x, 0deg) * 6))
       rotateY(calc(-8deg + var(--tilt-y, 0deg) * 7)) scale(1.025);
     transition: transform 140ms ease-out;

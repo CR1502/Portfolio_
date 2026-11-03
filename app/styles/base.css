@@ -7,10 +7,8 @@ html {
 }
 /* Smooth scrolling is opt-in: it must never fight Reduce Motion, and the
    viewport harness needs instant programmatic scrolls. */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+:root[data-motion="full"] {
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -203,10 +201,13 @@ main {
 .field-ready body::after {
   opacity: 0;
 }
-@media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+@media (prefers-contrast: more) {
   .interactive-field {
     display: none;
   }
+}
+:root[data-motion="reduce"] .interactive-field {
+  display: none;
 }
 
 /* Slow colour parallax follows scroll position without changing scroll physics. */

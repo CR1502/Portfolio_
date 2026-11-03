@@ -169,10 +169,8 @@
   translate: var(--magnet-x, 0px) var(--magnet-y, 0px);
   transition: translate var(--dur-2) var(--ease-out-quint);
 }
-@media (prefers-reduced-motion: reduce) {
-  .button-content {
-    translate: none;
-  }
+:root[data-motion="reduce"] .button-content {
+  translate: none;
 }
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
@@ -326,8 +324,8 @@
   }
 }
 /* Pointer response belongs to the artwork itself, without extra controls. */
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .retrieval-atlas > svg {
+@media (hover: hover) {
+  :root[data-motion="full"] .retrieval-atlas > svg {
     transform: translateY(calc(var(--scene-shift, 0px) * -0.25))
       rotateX(var(--atlas-x, 0deg)) rotateY(var(--atlas-y, 0deg));
     transition: transform 180ms ease-out;

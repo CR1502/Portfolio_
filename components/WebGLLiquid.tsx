@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 /**
  * Adapted from Componentry WebGL Liquid, MIT, Copyright (c) 2026 Harsh Jadhav.
@@ -151,7 +152,7 @@ export function WebGLLiquid({
     const mount = host.current,
       surface = canvas.current;
     if (!mount || !surface) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     const contrastPreference = matchMedia("(prefers-contrast: more)");
     let dispose = () => {};
 

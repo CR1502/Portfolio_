@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 import { useEffect, useRef } from "react";
 
 /** A projected retrieval landscape: relevant evidence rises from the corpus. */
@@ -19,7 +20,7 @@ export default function RetrievalAtlas() {
   useEffect(() => {
     const element = host.current;
     if (!element) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     let frame = 0,
       x = 0,
       y = 0;

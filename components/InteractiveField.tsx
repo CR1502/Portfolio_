@@ -1,11 +1,12 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 import { useEffect, useRef } from "react";
 
 /** A scroll-linked, layered contour field. No pointer input or scroll interception. */
 export default function InteractiveField() {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     const contrast = matchMedia("(prefers-contrast: more)");
     let dispose = () => {};
     const setup = () => {

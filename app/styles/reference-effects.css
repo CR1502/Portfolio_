@@ -31,11 +31,17 @@
 .motion-cursor {
   display: none !important;
 }
-@media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+@media (prefers-contrast: more) {
   .pixel-canvas {
     display: none;
   }
   .webgl-liquid canvas {
     display: none;
   }
+}
+:root[data-motion="reduce"] .pixel-canvas {
+  display: none;
+}
+:root[data-motion="reduce"] .webgl-liquid canvas {
+  display: none;
 }

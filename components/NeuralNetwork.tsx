@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef, useState } from "react";
 import { detectQuality } from "@/lib/quality";
@@ -22,7 +23,7 @@ export default function NeuralNetwork() {
   useEffect(() => {
     const mount = host.current;
     if (!mount) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     let cancelled = false,
       activated = false,
       timeout = 0;

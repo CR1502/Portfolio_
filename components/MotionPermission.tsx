@@ -1,4 +1,5 @@
 "use client";
+import { reducedMotion } from "@/lib/motion";
 
 import { useEffect, useRef, useState } from "react";
 import { setParallax } from "@/lib/scene-motion";
@@ -12,7 +13,7 @@ export default function MotionPermission() {
   const [message, setMessage] = useState("");
   const stop = useRef<() => void>(() => {});
   useEffect(() => {
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const reduced = reducedMotion();
     const coarse = matchMedia("(pointer: coarse)");
     const update = () => {
       setSupported(

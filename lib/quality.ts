@@ -3,6 +3,8 @@
  * and consumed by every 3D surface so they degrade together rather than each
  * guessing.
  */
+import { isReducedMotion } from "./motion";
+
 export type Tier = "high" | "mid" | "low";
 
 export interface Quality {
@@ -25,9 +27,7 @@ export interface Quality {
 let cached: Quality | undefined;
 
 export function detectQuality(): Quality {
-  const reduced =
-    typeof matchMedia === "function" &&
-    matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduced = isReducedMotion();
 
   if (reduced)
     return {
